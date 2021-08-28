@@ -1,0 +1,17 @@
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Infrastructure.deps.json
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Infrastructure.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\ref\Infrastructure.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Infrastructure.pdb
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Application.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Entities.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Application.pdb
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Release\net5.0\Entities.pdb
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.csprojAssemblyReference.cache
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.AssemblyInfoInputs.cache
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.AssemblyInfo.cs
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.csproj.CopyComplete
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\ref\Infrastructure.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Release\net5.0\Infrastructure.pdb
