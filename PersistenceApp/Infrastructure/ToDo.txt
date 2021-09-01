@@ -1,0 +1,10 @@
+﻿MongoDb,
+Postgres, EF Core, Repository Pattern / Specification Pattern + Ardalis Guard
+Rabbit + basic console App
+Docker Compose with everything
+Test Project
+Serilog, ElasticSearch, Kibana - Nick Chapsas
+
+
+// docker pull redis
+// docker run --name my-redis -p 6379:6379 -d redis
