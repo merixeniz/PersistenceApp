@@ -15,3 +15,6 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
