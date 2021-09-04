@@ -1,9 +1,18 @@
+using Application.Interfaces.DataAccess;
+using Application.Mappings;
+using Entities.Dto;
+using FluentValidation.AspNetCore;
+using Infrastructure;
+using Infrastructure.Data;
+using Infrastructure.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using PersistenceApp.Middleware;
 
 namespace PersistenceApp
 {
@@ -31,6 +40,60 @@ namespace PersistenceApp
                 options.Configuration = Configuration.GetConnectionString("Redis");
                 options.InstanceName = "PersistenceApp_"; // prefix przed kazdym kluczem
             });
+
+            services.AddAutoMapper(typeof(Startup), typeof(MappingProfile));
+            
+            services.AddInfrastructure(Configuration);
+            services.AddControllers().AddNewtonsoftJson();
+
+            services.AddFluentValidation(fv =>
+                fv.RegisterValidatorsFromAssemblyContaining<CreateVirtualDeviceDtoValidator>());
+
+            #region CORS
+
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    //.AllowAnyOrigin();
+                    .WithOrigins("http://localhost:3000")
+                    .AllowCredentials();
+                });
+
+                opt.AddPolicy("CorsPolicyStaging", policy =>
+                {
+                    policy
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed(isOriginAllowed: _ => true)
+                        .AllowCredentials();
+                });
+
+                opt.AddPolicy("CorsPolicyProd", policy =>
+                {
+                    policy
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed(isOriginAllowed: _ => true)
+                        .AllowCredentials();
+                });
+            });
+
+            #endregion
+
+            #region Repositories
+
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IVirtualDeviceRepository, VirtualDeviceRepository>();
+            services.AddScoped<IBoardsRepository, BoardsRepository>();
+
+            #endregion
+
+            services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme)
+                    .AddCertificate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +110,12 @@ namespace PersistenceApp
 
             app.UseRouting();
 
+            app.UseCors("CorsPolicyProd");
+
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseExceptionMiddleware();
 
             app.UseEndpoints(endpoints =>
             {

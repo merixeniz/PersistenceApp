@@ -71,3 +71,15 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\System.Text.Json.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Humanizer.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Certificate.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Newtonsoft.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
