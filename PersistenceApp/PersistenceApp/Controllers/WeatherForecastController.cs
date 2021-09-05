@@ -38,9 +38,10 @@ namespace PersistenceApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        public IEnumerable<WeatherForecast> Get()
         {
-            var tmp = await _dbContext.Users.ToListAsync();
+
+            _logger.LogInformation("Get endpoint getting hit");
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -90,8 +91,10 @@ namespace PersistenceApp.Controllers
         }
 
         [HttpGet("[action]")]
-        public ActionResult<IEnumerable<ItemDto>> SampleGet()
+        public async Task<ActionResult<IEnumerable<ItemDto>>> SampleGet()
         {
+            var tmp = await _dbContext.Users.ToListAsync();
+
             var dtos = new List<ItemDto>
             {
                 new ItemDto { Id = 1, Name = "Rafał" },
