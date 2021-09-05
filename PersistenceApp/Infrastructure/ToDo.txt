@@ -8,3 +8,18 @@ Dapper
 
 // docker pull redis
 // docker run --name my-redis -p 6379:6379 -d redis
+
+// docker pull postgres
+// docker run --name my-postgres -e POSTGRES_PASSWORD=postgres -p 5431:5432 -d postgres
+
+
+dotnet ef migrations add InitialMigrations -s PersistenceApp -p Infrastructure --context PersistenceDbContext --output-dir Migrations/PersistenceApp
+dotnet ef database update -s PersistenceApp -p Infrastructure --context PersistenceDbContext
+
+
+
+dotnet ef migrations remove -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext
+dotnet ef migrations add BoardThumbnailBytea -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext --output-dir Data/Migrations/OVSystemView
+dotnet ef migrations add MigrationAfterRemove -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext --output-dir Data/Migrations/OVSystemView
+
+dotnet ef migrations add CmdJsonTypeLengthAdded -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext --output-dir Data/Migrations/OVSystemView

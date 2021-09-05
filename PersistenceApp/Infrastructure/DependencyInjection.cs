@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.Common;
 
@@ -18,6 +20,8 @@ namespace Infrastructure
                 { "Keepalive", configuration["SQ_DB_KEEPALIVE"] }
             };
 
+            services.AddDbContext<PersistenceDbContext>(o => o.UseNpgsql("User ID=postgres;Password=postgres;Host=127.0.0.1;Port=5431;Database=PersistenceApp;"));
+
             //services.AddDbContext<IOvDbContext, OvDbContext>(o =>
             //{
             //    o.UseNpgsql(connectionStringBuilder.ConnectionString);
@@ -26,7 +30,7 @@ namespace Infrastructure
             //    //o.ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning));
             //});
 
-            //services.AddScoped<OvDbContext>();
+            services.AddScoped<PersistenceDbContext>();
 
             return services;
         }

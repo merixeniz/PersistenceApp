@@ -9,3 +9,4 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Ent
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\ref\Entities.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.pdb
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.csprojAssemblyReference.cache

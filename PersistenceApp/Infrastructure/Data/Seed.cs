@@ -10,7 +10,7 @@ namespace Infrastructure.Data
 {
     public class Seed
     {
-        public static async Task SeedData(PerisstenceDbContext dbContext, UserManager<CoreUser> userManager)
+        public static async Task SeedData(PersistenceDbContext dbContext, UserManager<CoreUser> userManager)
         {
             try
             {

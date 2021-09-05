@@ -5,6 +5,7 @@ using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
+using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,6 +45,8 @@ namespace PersistenceApp
             services.AddAutoMapper(typeof(Startup), typeof(MappingProfile));
             
             services.AddInfrastructure(Configuration);
+            services.AddIdentityServices(Configuration);
+
             services.AddControllers().AddNewtonsoftJson();
 
             services.AddFluentValidation(fv =>
