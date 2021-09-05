@@ -23,7 +23,10 @@ dotnet ef database update -s PersistenceApp -p Infrastructure --context Persiste
 dotnet ef migrations remove -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext
 
 -- MongoDb -- https://www.youtube.com/watch?v=D5Q5WhGT0w8
+
 MongoDb Compass - view 
 mongodb://127.0.0.1:27017 - connection string in Compass
 // docker pull mongo
 // docker run --name my-mongo -p 27017-27019:27017-27019 -d mongo
+
+https://bd90.pl/uzywanie-mongodb-w-srodowisku-net-core/
