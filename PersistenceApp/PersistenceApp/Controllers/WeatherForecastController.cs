@@ -1,6 +1,10 @@
 ﻿using Application.Extensions;
+using Ardalis.Specification.EntityFrameworkCore;
 using Entities;
+using Infrastructure.Data;
+using Infrastructure.Data.MongoDb;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using PersistenceApp.Entities;
@@ -22,17 +26,22 @@ namespace PersistenceApp.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IDistributedCache _cache;
+        private readonly PersistenceDbContext _dbContext;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, 
-                                         IDistributedCache cache)
+                                         IDistributedCache cache,
+                                         PersistenceDbContext dbContext)
         {
             _logger = logger;
             _cache = cache;
+            _dbContext = dbContext;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>> Get()
         {
+            var tmp = await _dbContext.Users.ToListAsync();
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -62,8 +71,21 @@ namespace PersistenceApp.Controllers
         }
 
         [HttpPost("[action]")]
-        public IActionResult SamplePost([FromBody] ItemDto dto)
+        public async Task<IActionResult> SamplePost([FromBody] ItemDto dto)
         {
+            MongoContext mongoDb = new MongoContext("Person");
+
+            var person = new Person()
+            {
+                Id = 1,
+                DateOfBirth = DateTime.Now.AddDays(-5000),
+                Name = "Andrzej",
+                LastName = "Stodoła",
+                Profession = "Programmer"
+            };
+
+            await mongoDb.InserRecordAsync<Person>("Person", person);
+
             return Ok();
         }
 

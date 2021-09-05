@@ -83,3 +83,15 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.Newtonsoft.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\DnsClient.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\MongoDB.Bson.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\MongoDB.Driver.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\SharpCompress.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll

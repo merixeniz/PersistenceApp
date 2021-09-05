@@ -6,20 +6,24 @@ Test Project
 Serilog, ElasticSearch, Kibana - Nick Chapsas
 Dapper
 
+
+-- REDIS -- TIM COREY -- 
+RedisManager to view db
 // docker pull redis
 // docker run --name my-redis -p 6379:6379 -d redis
 
+-- POSTGRES in container --
+DBeaver
 // docker pull postgres
 // docker run --name my-postgres -e POSTGRES_PASSWORD=postgres -p 5431:5432 -d postgres
-
 
 dotnet ef migrations add InitialMigrations -s PersistenceApp -p Infrastructure --context PersistenceDbContext --output-dir Migrations/PersistenceApp
 dotnet ef database update -s PersistenceApp -p Infrastructure --context PersistenceDbContext
 
-
-
 dotnet ef migrations remove -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext
-dotnet ef migrations add BoardThumbnailBytea -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext --output-dir Data/Migrations/OVSystemView
-dotnet ef migrations add MigrationAfterRemove -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext --output-dir Data/Migrations/OVSystemView
 
-dotnet ef migrations add CmdJsonTypeLengthAdded -s OVSystemView.API -p OVSystemView.Infrastructure --context OVDbContext --output-dir Data/Migrations/OVSystemView
+-- MongoDb -- https://www.youtube.com/watch?v=D5Q5WhGT0w8
+MongoDb Compass - view 
+mongodb://127.0.0.1:27017 - connection string in Compass
+// docker pull mongo
+// docker run --name my-mongo -p 27017-27019:27017-27019 -d mongo

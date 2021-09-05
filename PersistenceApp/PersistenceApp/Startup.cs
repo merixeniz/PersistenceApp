@@ -95,6 +95,9 @@ namespace PersistenceApp
 
             #endregion
 
+            services.AddExceptionMiddleware()
+                .AddExceptionMappings<AppExceptionMappings>();
+
             services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme)
                     .AddCertificate();
         }
