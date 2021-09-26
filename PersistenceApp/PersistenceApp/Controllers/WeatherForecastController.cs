@@ -1,4 +1,5 @@
 ﻿using Application.Extensions;
+using Application.Interfaces;
 using Ardalis.Specification.EntityFrameworkCore;
 using Entities;
 using Infrastructure.Data;
@@ -27,21 +28,27 @@ namespace PersistenceApp.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IDistributedCache _cache;
         private readonly PersistenceDbContext _dbContext;
+        private readonly ITestService _testService;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, 
                                          IDistributedCache cache,
-                                         PersistenceDbContext dbContext)
+                                         PersistenceDbContext dbContext,
+                                         ITestService testService)
         {
             _logger = logger;
             _cache = cache;
             _dbContext = dbContext;
+            _testService = testService;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
 
+            _testService.TestMethod();
+
             _logger.LogInformation("Get endpoint getting hit");
+            _logger.LogInformation("Code changes");
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

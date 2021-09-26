@@ -6,7 +6,6 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Entities.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Application.pdb
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Entities.pdb
-G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
@@ -18,3 +17,4 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache

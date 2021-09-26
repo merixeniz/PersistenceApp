@@ -30,3 +30,8 @@ mongodb://127.0.0.1:27017 - connection string in Compass
 // docker run --name my-mongo -p 27017-27019:27017-27019 -d mongo
 
 https://bd90.pl/uzywanie-mongodb-w-srodowisku-net-core/
+
+-- Serilog + ElasticSearch + Kibana
+
+exit with code 78:
+sudo sysctl -w vm.max_map_count=262144 

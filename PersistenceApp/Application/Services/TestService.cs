@@ -1,10 +1,25 @@
 ﻿using Application.Interfaces;
+using Application.Interfaces.DataAccess;
+using Entities;
+using System.Threading.Tasks;
 
 namespace Application.Services
 {
     public class TestService : ITestService
     {
-        // docker pull redis
-        // docker run --name my-redis -p 6379:6379 -d redis
+        private readonly IUnitOfWork _unitOfWork;
+
+        public TestService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public Task TestMethod()
+        {
+            var vdRepo = _unitOfWork.Repository<VirtualDevice>();
+            var boardRepo = _unitOfWork.CustomRepository<IBoardsRepository>();
+
+            return Task.CompletedTask;
+        }
     }
 }

@@ -1,5 +1,7 @@
+using Application.Interfaces;
 using Application.Interfaces.DataAccess;
 using Application.Mappings;
+using Application.Services;
 using Entities.Dto;
 using FluentValidation.AspNetCore;
 using Infrastructure;
@@ -94,6 +96,8 @@ namespace PersistenceApp
             services.AddScoped<IBoardsRepository, BoardsRepository>();
 
             #endregion
+
+            services.AddScoped<ITestService, TestService>();
 
             services.AddExceptionMiddleware()
                 .AddExceptionMappings<AppExceptionMappings>();
