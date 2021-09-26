@@ -111,6 +111,14 @@ namespace PersistenceApp.Controllers
             return Ok(dtos);
         }
 
+        [HttpGet("[action]")]
+        public IActionResult LogTest()
+        {
+            _logger.LogInformation("Some info");
+
+            return Ok();
+        }
+
 
 
 
