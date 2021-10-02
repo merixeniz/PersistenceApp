@@ -35,3 +35,6 @@ https://bd90.pl/uzywanie-mongodb-w-srodowisku-net-core/
 
 exit with code 78:
 sudo sysctl -w vm.max_map_count=262144 
+
+
+asdasdasdasd
