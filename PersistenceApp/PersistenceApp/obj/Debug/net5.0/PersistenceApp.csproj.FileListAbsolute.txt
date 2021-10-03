@@ -109,3 +109,4 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Serilog.Sinks.Elasticsearch.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Serilog.Sinks.File.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
+G:\JTC\Programowanie\PersistenceApp\PersistenceApp\PersistenceApp\obj\Debug\net5.0\PersistenceApp.csproj.CopyComplete
