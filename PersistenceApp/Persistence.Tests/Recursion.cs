@@ -3,7 +3,7 @@ using FluentAssertions;
 using Xunit;
 
 namespace Persistence.Tests;
-public class Tests
+public class Recursion
 {
     [Fact]
     public void Fibonacci()
