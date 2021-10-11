@@ -36,5 +36,10 @@ https://bd90.pl/uzywanie-mongodb-w-srodowisku-net-core/
 exit with code 78:
 sudo sysctl -w vm.max_map_count=262144 
 
+-- SCRUM --
+
+scrum vs kanban?
+kto to ba, qa po, sm 
+
 
 asdasdasdasd

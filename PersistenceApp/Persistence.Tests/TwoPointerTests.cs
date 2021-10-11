@@ -1,5 +1,6 @@
 ﻿using Application.Algorithms.MultiplePointer;
 using Application.Algorithms.MultiplePointer.EquiDirectional;
+using Application.Algorithms.MultiplePointer.OppositeDirectional;
 using FluentAssertions;
 using Xunit;
 
@@ -100,6 +101,21 @@ namespace Persistence.Tests
             string input = "abcdAabcdefghijkAbvzAssA";
 
             sut.FindLongestSubstringWithoutCharRepetition(input).Should().Be("abcdefghijk");
+        }
+
+        [Fact]
+        public void Palindrome_Example1()
+        {
+            var sut = new Palindrome();
+
+            string input = "kajak";
+            string input2 = "aaabb";
+            string input3 = "AbcddCba";
+
+            sut.IsPalindrome(input).Should().Be(true);
+            sut.IsPalindrome(input2).Should().Be(false);
+            sut.IsPalindrome(input3).Should().Be(true);
+
         }
     }
 }
