@@ -5,7 +5,21 @@ Since the algorithms are not mentioned in the description of the video, here are
 4. Making use of Hash Tables
 5. Knowing how to manipulate multiple variables/Pointers at once
 6. Reversing a linked list - https://youtu.be/NhapasNIKuQ?t=276
-7.Sorting fundamentals  (time complexity, functioning, etc.)
+7. Sorting fundamentals  (time complexity, functioning, etc.)
 8. Recursion
 9. Custom Data structure (ex. suffix tree )
 10.Binary Search
+
+
+Pytania rekrutacyjne AZURE:
+https://www.interviewbit.com/azure-interview-questions/#max-failed-attempts-in-azure-id-authentication
+
+Pytania rekrutacyjne SII:
+Na teœcie pytania w stylu - jaki bêdzie wynik dzia³a aplikacji (np. przyk³ad z kilkoma klasami dziedzicz¹cymi po sobie) 
+- co przechowuje HttpContext 
+- Co to jest ACID, pozimy izolacji transakcji 
+- pytania o wybrane s³owa kluczowe C# 
+- napisanie interacyjnie i rekurencyjnie funkcji coœ tam licz¹cej 
+- praktyczne pytanie z linq - coœ tam wybraæ, usun¹æ i wrzuciæ do nowej kolekcji 
+- napisaæ zapytania SQL z left joinem, grupowaniem; zaprojektowaæ prosta strukturê danych 
+Podczas rozmowy telefonicznej by³y pytania m.in. o SOLID, MVC
