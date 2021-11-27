@@ -1,5 +1,8 @@
 ﻿using Application.Algorithms;
+using Entities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Benchmarks
 {
@@ -30,6 +33,9 @@ namespace Benchmarks
 
             //Console.WriteLine("Post order:");
             //treeTraversals.PostOrderTraversal(root);
+
+            IEnumerable<Person> tmp = new List<Person>();
+            Dictionary<int, Person> dict = tmp.ToDictionary(key => key.Id);
 
             var parenthesisProblem = new ParenthesisProblem();
             Console.WriteLine(parenthesisProblem.CheckParenthesis("()[]{}"));
