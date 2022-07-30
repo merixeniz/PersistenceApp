@@ -10,3 +10,15 @@ G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Ent
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\ref\Entities.dll
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.pdb
 G:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\bin\Debug\net5.0\Entities.deps.json
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\bin\Debug\net5.0\Entities.dll
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\bin\Debug\net5.0\Entities.pdb
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.AssemblyInfoInputs.cache
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.AssemblyInfo.cs
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.csproj.CoreCompileInputs.cache
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.dll
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\refint\Entities.dll
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\Entities.pdb
+I:\JTC\Programowanie\PersistenceApp\PersistenceApp\Entities\obj\Debug\net5.0\ref\Entities.dll

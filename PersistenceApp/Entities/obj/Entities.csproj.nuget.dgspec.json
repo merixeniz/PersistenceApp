@@ -1,37 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "G:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj": {}
+    "I:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "G:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj": {
+    "I:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj",
+        "projectUniqueName": "I:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "G:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\Szymon\\.nuget\\packages\\",
-        "outputPath": "G:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\obj\\",
+        "projectPath": "I:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\szyol\\.nuget\\packages\\",
+        "outputPath": "I:\\JTC\\Programowanie\\PersistenceApp\\PersistenceApp\\Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Szymon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\szyol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -42,24 +37,24 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[10.3.3, )"
+              "version": "[11.1.0, )"
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",
-              "version": "[10.3.3, )"
+              "version": "[11.1.2, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.9, )"
+              "version": "[6.0.7, )"
             },
             "System.Text.Json": {
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[6.0.5, )"
             }
           },
           "imports": [
@@ -72,26 +67,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
