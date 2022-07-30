@@ -5,7 +5,6 @@
         // given an array of ints that is already sorted in ascending order, find two numbers such that they add up to a specific target number
 
         private int[] input = new int[] { 2, 7, 11, 15 };
-        private int target = 9;
 
         public (int index1, int index2) FindTwoNumbers(int[] input, int sumTarget)
         {

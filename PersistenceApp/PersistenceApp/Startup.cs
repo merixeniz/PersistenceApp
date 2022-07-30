@@ -1,13 +1,16 @@
+using System;
 using Application.Interfaces;
 using Application.Interfaces.DataAccess;
 using Application.Mappings;
 using Application.Services;
+using Application.Services.BackgroundJobs;
 using Entities.Dto;
 using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
 using Infrastructure.Extensions;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,7 +48,7 @@ namespace PersistenceApp
             });
 
             services.AddAutoMapper(typeof(Startup), typeof(MappingProfile));
-            
+
             services.AddInfrastructure(Configuration);
             services.AddIdentityServices(Configuration);
 
@@ -97,7 +100,38 @@ namespace PersistenceApp
 
             #endregion
 
+            #region MassTransit
+
+            //services.AddMassTransit(x =>
+            //{
+            //    x.UsingAzureServiceBus((context, cfg) =>
+            //    {
+            //        cfg.Host("connection-string");
+
+            //        cfg.ReceiveEndpoint("input-queue", e =>
+            //        {
+            //            // all of these are optional!!
+            //            e.PrefetchCount = 100;
+
+            //            // number of "threads" to run concurrently
+            //            e.MaxConcurrentCalls = 100;
+
+            //            // default, but shown for example
+            //            e.LockDuration = TimeSpan.FromMinutes(5);
+
+            //            // lock will be renewed up to 30 minutes
+            //            e.MaxAutoRenewDuration = TimeSpan.FromMinutes(30);
+            //        });
+            //    });
+            //});
+
+            #endregion
+
             services.AddScoped<ITestService, TestService>();
+
+            services.AddSingleton<ControlledWorker>();
+            services.AddHostedService(x => x.GetRequiredService<ControlledWorker>());
+            services.AddHostedService<Worker>();
 
             services.AddExceptionMiddleware()
                 .AddExceptionMappings<AppExceptionMappings>();

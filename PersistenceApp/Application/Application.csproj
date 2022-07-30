@@ -8,6 +8,9 @@
     <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
     <PackageReference Include="Ardalis.Specification" Version="6.1.0" />
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="MassTransit" Version="8.0.5" />
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.5" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.7" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
   </ItemGroup>
