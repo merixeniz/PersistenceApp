@@ -127,7 +127,7 @@ namespace PersistenceApp
 
             #endregion
 
-            services.AddScoped<ITestService, TestService>();
+            services.AddTransient<ITestService, TestService>();
 
             services.AddSingleton<ControlledWorker>();
             services.AddHostedService(x => x.GetRequiredService<ControlledWorker>());

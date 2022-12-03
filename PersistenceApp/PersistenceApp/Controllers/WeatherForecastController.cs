@@ -13,12 +13,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Services;
 
 namespace PersistenceApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : Controller
     {
         private static readonly string[] Summaries = new[]
         {
@@ -117,6 +118,19 @@ namespace PersistenceApp.Controllers
             _logger.LogInformation("Some info");
 
             return Ok();
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult JsonTest()
+        {
+            var list = new List<int> { 1, 2, 3, 4, 5, 6 };
+            var result = "dupa";
+            var dtos = new List<ItemDto>
+            {
+                new ItemDto { Id = 1, Name = "Rafał" },
+                new ItemDto { Id = 1, Name = "Andrzej" }
+            };
+            return Json(new {result});
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Application.Services;
 using Entities.ServiceBus;
 using MassTransit;
@@ -9,17 +10,20 @@ namespace PersistenceApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AzureController : ControllerBase
+    public class AzureController : Controller
     {
         private readonly ILogger<AzureController> _logger;
-        private readonly IBus _bus;
+        //private readonly IBus _bus;
         private readonly Worker _worker;
 
-        public AzureController(ILogger<AzureController> logger, IBus bus, Worker worker)
+        public AzureController(ILogger<AzureController> logger, /*IBus bus,*/ Worker worker)
         {
             _logger = logger;
-            _bus = bus;
+            //_bus = bus;
             _worker = worker;
+
+            // https://www.youtube.com/watch?v=8marp1oyY_I
+            // https://www.youtube.com/watch?v=qRTx3TrbNbU
         }
 
         [HttpGet("[action]")]
@@ -33,16 +37,17 @@ namespace PersistenceApp.Controllers
 
             _logger.LogInformation(message.Body);
 
-            _bus.Publish(message);
+            //_bus.Publish(message);
 
             return Ok();
         }
 
         [HttpGet("[action]")]
-        public IActionResult FunctionResponse(string data)
+        public IActionResult FunctionResponse()
         {
-
-            return Ok();
+            int result = 5;
+            return Json(new { result });
+            //return Ok();
         }
     }
 }

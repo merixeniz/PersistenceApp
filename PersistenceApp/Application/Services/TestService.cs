@@ -7,8 +7,14 @@ namespace Application.Services
 {
     public class TestService : ITestService
     {
+        public static int StaticField = 5;
+
         private readonly IUnitOfWork _unitOfWork;
 
+        public TestService()
+        {
+                
+        }
         public TestService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
