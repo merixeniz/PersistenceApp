@@ -12,6 +12,7 @@ using PersistenceApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Application.Services;
 
@@ -31,7 +32,7 @@ namespace PersistenceApp.Controllers
         private readonly PersistenceDbContext _dbContext;
         private readonly ITestService _testService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, 
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
                                          IDistributedCache cache,
                                          PersistenceDbContext dbContext,
                                          ITestService testService)
@@ -123,18 +124,9 @@ namespace PersistenceApp.Controllers
         [HttpGet("[action]")]
         public IActionResult JsonTest()
         {
-            var list = new List<int> { 1, 2, 3, 4, 5, 6 };
             var result = "dupa";
-            var dtos = new List<ItemDto>
-            {
-                new ItemDto { Id = 1, Name = "Rafał" },
-                new ItemDto { Id = 1, Name = "Andrzej" }
-            };
-            return Json(new {result});
+            return Json(new { result });
         }
-
-
-
-
+        
     }
 }

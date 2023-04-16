@@ -38,5 +38,36 @@ namespace Application.Algorithms.MultiplePointer
 
             return subStrings.OrderByDescending(x => x.Length).First();
         }
+
+        public int LengthOfLongestSubstring(string s)
+        {
+            int result = 0;
+            var tmpResult = new List<char>();
+
+            for (int start = 0; start <= s.Length - 1; start++)
+            {
+                tmpResult.Clear();
+                tmpResult.Add(s[start]);
+                for (int end = 0; end <= s.Length - 1; end++)
+                {
+                    if (end <= start) continue;
+
+                    if (!tmpResult.Contains(s[end]))
+                    {
+                        tmpResult.Add(s[end]);
+
+                        if (tmpResult.Count > result)
+                            result = tmpResult.Count;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (tmpResult.Count > result)
+                    result = tmpResult.Count;
+            }
+            return result;
+        }
     }
 }
