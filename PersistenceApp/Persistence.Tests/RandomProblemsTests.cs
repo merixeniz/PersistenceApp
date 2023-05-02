@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Algorithms.RandomStuff;
+using Application.Algorithms.Trees;
 using FluentAssertions;
 using Xunit;
 
@@ -21,6 +22,16 @@ namespace Persistence.Tests
 
             result.Should().Be(-21);
             result2.Should().Be(0);
+        }
+
+        [Fact]
+        public void Trie_Test()
+        {
+            var trie = new Trie();
+            trie.Insert("abc");
+            trie.Insert("anno");
+
+            trie.Search("anno").Should().BeTrue();
         }
     }
 }
