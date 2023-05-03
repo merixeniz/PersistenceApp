@@ -115,9 +115,69 @@ namespace Application.Algorithms.TakeYouForward
 
                 return results.MinBy(x => x.Length) ?? Array.Empty<int>();
             }
+
+            public static int MaxSubArraySum(int[] arr)
+            {
+                // arr = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+                if (arr.Length == 0) return 0;
+
+                int maxSum = 0;
+                int sum = 0;
+                int start = 0;
+                int startIndex = 0;
+                int endIndex = 0;
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (sum == 0)
+                        start = i;
+
+                    sum += arr[i];
+
+                    if (sum < 0)
+                        sum = 0;
+
+                    if (sum > maxSum)
+                    {
+                        maxSum = sum;
+                        startIndex = start;
+                        endIndex = i;
+                    }
+                }
+
+                return maxSum;
+            }
+
+            public static (int diff, int dayBuy, int daySell) StockBuyAndSell(int[] arr)
+            {
+                if (arr.Length == 0) return (0, 0 ,0);
+
+                int dayBuy = 0;
+                int daySell = 0;
+
+                int min = arr[0];
+                int diff = 0;
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (min < arr[i])
+                    {
+                        if (arr[i] - min > diff)
+                        {
+                            diff = arr[i] - min;
+                            daySell = i;
+                        }
+                        continue;
+                    }
+                    min = arr[i];
+                    dayBuy = i;
+                }
+
+                return (diff, dayBuy, daySell);
+            }
         }
 
-        
+
 
         // LAST: https://takeuforward.org/data-structure/longest-subarray-with-given-sum-k/
     }
