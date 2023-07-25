@@ -150,7 +150,7 @@ namespace Application.Algorithms.TakeYouForward
 
             public static (int diff, int dayBuy, int daySell) StockBuyAndSell(int[] arr)
             {
-                if (arr.Length == 0) return (0, 0 ,0);
+                if (arr.Length == 0) return (0, 0, 0);
 
                 int dayBuy = 0;
                 int daySell = 0;
@@ -175,6 +175,8 @@ namespace Application.Algorithms.TakeYouForward
 
                 return (diff, dayBuy, daySell);
             }
+
+            
         }
 
 

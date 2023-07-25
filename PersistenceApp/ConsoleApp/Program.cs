@@ -1,7 +1,8 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Application.Algorithms.Trees;
-using Microsoft.Azure.Amqp.Framing;
-using Application.Algorithms.TakeYouForward;
+﻿using Application.Algorithms.TakeYouForward;
+using Application.Other;
+using Entities.Dto;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace ConsoleApp
 {
@@ -37,9 +38,23 @@ namespace ConsoleApp
             var stocks = new[] { 7, 1, 5, 3, 6, 4 };
             TakeUForward.Arrays.StockBuyAndSell(stocks);
 
+            var reversedNumber = TakeUForward.Integers.ReverseNumber(472);
+
+            var vdDto = new CreateVirtualDeviceDto() { Name = "Siemens PLC", PortId = 9999 };
+            var success = Result<CreateVirtualDeviceDto>.Success(vdDto, "All gone well");
+            var failure = Result<CreateVirtualDeviceDto>.Failure(vdDto, "Something went wrong");
+
+            var serializedSuccess = JsonSerializer.Serialize(success);
+            var seralizedFailure = JsonConvert.SerializeObject(failure);
+
+            var allowedOptions = FlagEnum.Option1 | FlagEnum.Option2 | FlagEnum.Option3;
+
+            ExampleUsage.FuncExampleMethod();
+            ExampleUsage.PredicateTExampleMethod();
+
             Console.WriteLine("Hello, World!");
         }
 
 
-    }
+}
 }
