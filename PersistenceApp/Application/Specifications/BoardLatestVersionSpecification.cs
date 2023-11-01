@@ -1,6 +1,5 @@
 ﻿using Ardalis.Specification;
 using Entities;
-using System.Linq;
 
 namespace Application.Specifications
 {

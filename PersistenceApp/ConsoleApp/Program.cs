@@ -1,4 +1,8 @@
-﻿using Application.Algorithms.TakeYouForward;
+﻿using System.Runtime.InteropServices;
+using Application.Algorithms;
+using Application.Algorithms.OOP;
+using Application.Algorithms.TakeYouForward;
+using Application.Extensions;
 using Application.Other;
 using Entities.Dto;
 using Newtonsoft.Json;
@@ -8,7 +12,7 @@ namespace ConsoleApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var strs = new[] { "abc", "anno" };
             TakeUForward.Arrays.LongestCommonPrefix(strs);
@@ -52,9 +56,30 @@ namespace ConsoleApp
             ExampleUsage.FuncExampleMethod();
             ExampleUsage.PredicateTExampleMethod();
 
+            Task.Run(async () => await MethodAsync().ConfigureAwait(false)).Wait();
+            await MethodAsync();
+            //await Task.Run(() => MethodAsync());
+
+            var output = SpanFun.SpanPlayground();
+
+            var person = new Person();
+            person.Work();
+
+            var lawyer = new Lawyer();
+            lawyer.Work();
+
+            var softwareDev = new SoftwareDeveloper();
+            softwareDev.Work();
+
+            RangeOperatorPlayground.ChangeOrderOfElementsInCollection();
+
             Console.WriteLine("Hello, World!");
         }
 
-
-}
+        private static async Task MethodAsync()
+        {
+            await Task.Delay(5);
+            Console.WriteLine("Method ASync run");
+        }
+    }
 }
