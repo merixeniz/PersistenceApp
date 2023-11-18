@@ -6,7 +6,7 @@ namespace Application.Algorithms
 {
     public class BFS
     {
-        public void Traverse(Node node)
+        public static void Traverse(Node node)
         {
             Queue<Node> queue = new Queue<Node>();
 
