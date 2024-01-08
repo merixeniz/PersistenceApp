@@ -39,6 +39,26 @@ namespace Application.Algorithms.Trees
             }
         }
 
+        private void PreorderTraversal(Node node)
+        {
+            if (node != null)
+            {
+                Console.Write(node.Data + " ");
+                PreorderTraversal(node.Left);
+                PreorderTraversal(node.Right);
+            }
+        }
+
+        private void PostorderTraversal(Node node)
+        {
+            if (node != null)
+            {
+                PostorderTraversal(node.Left);
+                PostorderTraversal(node.Right);
+                Console.Write(node.Data + " ");
+            }
+        }
+
         public void InorderTraversal()
         {
             InorderTraversal(root);
