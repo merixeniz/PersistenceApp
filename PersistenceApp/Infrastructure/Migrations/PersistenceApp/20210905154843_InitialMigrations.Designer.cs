@@ -276,7 +276,7 @@ namespace Infrastructure.Migrations.PersistenceApp
                     b.Property<int?>("CoreUserId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Value")
+                    b.Property<string>("Data")
                         .HasColumnType("text");
 
                     b.HasKey("UserId", "LoginProvider", "Name");

@@ -11,7 +11,7 @@ namespace Application.Algorithms
             if (node == null)
                 return;
 
-            Console.WriteLine(node.Value);
+            Console.WriteLine(node.Data);
             Traverse(node.Left);
             Traverse(node.Right);
         }
@@ -27,7 +27,7 @@ namespace Application.Algorithms
             while (stack.Count > 0)
             {
                 Node current = stack.Pop();
-                Console.WriteLine(current.Value);
+                Console.WriteLine(current.Data);
 
                 if (current.Right != null)
                     stack.Push(current.Right);

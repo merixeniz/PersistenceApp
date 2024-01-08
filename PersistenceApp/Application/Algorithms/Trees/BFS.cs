@@ -18,7 +18,7 @@ namespace Application.Algorithms
             while (queue.Count > 0)
             {
                 node = queue.Dequeue();
-                Console.WriteLine(node.Value);
+                Console.WriteLine(node.Data);
 
                 if (node.Left != null)
                     queue.Enqueue(node.Left);

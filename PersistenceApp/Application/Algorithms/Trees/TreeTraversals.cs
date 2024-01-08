@@ -12,7 +12,7 @@ namespace Application.Algorithms
             if (node.Left != null)
                 InOrderTraversal(node.Left);
 
-            Console.WriteLine(node.Value + " ");
+            Console.WriteLine(node.Data + " ");
 
             if (node.Right != null)
                 InOrderTraversal(node.Right);
@@ -21,7 +21,7 @@ namespace Application.Algorithms
         public void PreOrderTraversal(Node node)
         {
             //Root -> Left - > Right
-            Console.WriteLine(node.Value + " ");
+            Console.WriteLine(node.Data + " ");
 
             if (node.Left != null)
                 PreOrderTraversal(node.Left);
@@ -40,7 +40,7 @@ namespace Application.Algorithms
             if (node.Left != null)
                 PostOrderTraversal(node.Left);
 
-            Console.WriteLine(node.Value + " ");
+            Console.WriteLine(node.Data + " ");
         }
     }
 }
