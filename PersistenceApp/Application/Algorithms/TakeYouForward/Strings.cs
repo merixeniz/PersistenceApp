@@ -13,8 +13,6 @@ namespace Application.Algorithms.TakeYouForward
             // https://leetcode.com/problems/sort-characters-by-frequency/
             public static string FrequencySort(string s)
             {
-                var concatenatedValues = string.Empty;
-
                 //var groupedAndOrdered = s
                 //    .GroupBy(x => x)
                 //    .OrderByDescending(x => x.Count());
@@ -27,10 +25,10 @@ namespace Application.Algorithms.TakeYouForward
                 //    }
                 //}
 
-                concatenatedValues = string.Concat(s
-                        .GroupBy(@char => @char)
-                        .OrderByDescending(@char => @char.Count())
-                        .SelectMany(groupItem => groupItem)
+                var concatenatedValues = string.Concat(s
+                    .GroupBy(@char => @char)
+                    .OrderByDescending(@char => @char.Count())
+                    .SelectMany(groupItem => groupItem)
                 );
 
                 return concatenatedValues;

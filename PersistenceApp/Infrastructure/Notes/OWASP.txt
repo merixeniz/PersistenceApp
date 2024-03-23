@@ -1,0 +1,33 @@
+﻿Oczywiście, oto krótki przegląd dobrych praktyk związanych z bezpieczeństwem aplikacji, z uwzględnieniem zasad OWASP:
+
+1. **Zabezpieczanie uwierzytelnienia i autoryzacji**: Wykorzystuj solidne mechanizmy uwierzytelniania, takie jak hashowanie haseł i 
+implementacja wielopoziomowych autoryzacji. Unikaj przechowywania haseł w czystej postaci.
+
+2. **Zarządzanie sesją**: Upewnij się, że sesje są bezpieczne i chronione przed atakami typu session fixation czy session hijacking. 
+Wykorzystuj bezpieczne mechanizmy sesji, takie jak tokeny CSRF (Cross-Site Request Forgery) i mechanizmy expiring session.
+
+3. **Zabezpieczenia przed atakami XSS (Cross-Site Scripting)**: Unikaj wstrzykiwania niezaufanych danych bezpośrednio do kodu HTML. 
+Wykorzystuj metody kontroli typu input validation oraz output encoding.
+
+4. **Zabezpieczenia przed atakami SQL Injection**: Używaj parametryzowanych zapytań SQL oraz ORM (Object-Relational Mapping). 
+Upewnij się, że dane wprowadzane przez użytkowników są odpowiednio walidowane i uświadom sobie konsekwencje niezaufanych danych wejściowych.
+
+5. **Bezpieczne zarządzanie konfiguracją**: Upewnij się, że poufne informacje, takie jak klucze API czy hasła, są bezpiecznie przechowywane, 
+np. poprzez wykorzystanie narzędzi do zarządzania tajnymi (secrets management) lub ustawienia zmiennych środowiskowych.
+
+6. **Regularne aktualizacje i monitorowanie**: Regularnie aktualizuj oprogramowanie, biblioteki i frameworki używane w aplikacji, 
+aby zminimalizować ryzyko wykorzystania znanych luk w zabezpieczeniach. Monitoruj aplikację w poszukiwaniu podejrzanych aktywności i zachowań.
+
+7. **Zabezpieczenia przed atakami CSRF (Cross-Site Request Forgery)**: Wykorzystuj tokeny CSRF, które uniemożliwiają nieautoryzowanym 
+użytkownikom wykonywanie akcji w imieniu zalogowanego użytkownika.
+
+8. **Bezpieczne przechowywanie danych**: Dbaj o to, aby dane przechowywane w aplikacji były odpowiednio zabezpieczone, 
+zarówno pod kątem poufności, jak i integralności. Wykorzystuj mechanizmy szyfrowania danych wrażliwych.
+
+9. **Testowanie penetracyjne**: Regularnie przeprowadzaj testy penetracyjne w celu identyfikacji potencjalnych luk w zabezpieczeniach aplikacji. 
+Pamiętaj o weryfikacji zgodności z zasadami OWASP.
+
+10. **Kontynuacja nauki i świadomość bezpieczeństwa**: Zapewnij regularne szkolenia dla zespołu programistycznego w zakresie bezpieczeństwa aplikacji 
+oraz śledź aktualne trendy i wyzwania związane z bezpieczeństwem informatycznym.
+
+Przestrzeganie tych praktyk pomoże zminimalizować ryzyko ataków i zwiększyć bezpieczeństwo Twojej aplikacji.

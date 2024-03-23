@@ -1,0 +1,45 @@
+﻿1. Responsible AI
+	- Fairness - ai system should treat all people the same, not beinn biased on gender, race etc.
+	- Relability and Savety - vehicles etc has to be safe, regular testing
+	- Privacy and security - models and data used to train them, np. our data in storage account shouldn't be used to train other shit
+	- Inclusiveness - every part of society sholud be able to take advantage of this
+	- Transparency - we shold now as much as possible how it work
+	- Accountability - there should be framework that solution meets ethical, legal standards
+
+2. What is AI
+	Software that exhibits human-like abilities
+	- Visual perception - understanding video, text etc.
+	- Language - idea to use natural language processing, understanding semantic meaning
+	- Speech - text to speech - speech to text, conversational AI
+	- Decision making - treshold that triggers decision in my mind
+	
+	AI builds on top of machine learning.
+	Machine learning - all data + algorithms used to train prediction models
+	Machine learning is build on top of data science which is math and statistics used to analyse data.
+
+3. Azure ML
+
+	I have data that I have labeled. Data to traning and data to test. 
+	Data -> train -> (create) model -> deploy model -> Data (feedback)
+
+4. Azure Cognitive Services (Azure AI)
+
+	Visual Perception:
+		Image analysis (picture give me info about it).
+		Video analysis (info about/from video)
+		Image clasification
+		Object detection (where is specifc object in image)
+		Facial analysis
+		OCR (optical character recognition)
+
+	Language:
+		Language understanding 
+			Question-answering
+			Text analysis
+		Translation
+
+	Speech:
+		Speech to text
+		Text to speech
+		Speech translation
+		Speaker recognition
