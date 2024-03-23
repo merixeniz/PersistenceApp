@@ -1,4 +1,5 @@
 ﻿Based on https://www.youtube.com/watch?v=I7fdWafTcPY
+https://raw.githubusercontent.com/johnthebrit/CertificationMaterials/main/whiteboards/AI-102-Whiteboard.png
 
 1. Responsible AI
 	- Fairness - ai system should treat all people the same, not beinn biased on gender, race etc.
@@ -150,3 +151,50 @@
 			obsluguje 164 print languages, 9 languages for handwritten text
 
 10. Language Understanding
+
+	Idea of learned
+		CLU (Custom language understading) - we have to train it on some INTENT (get time) which has possible 
+			Utterences and related Entity (what time is it, tell me the time, what is the time in (entity): London
+			Train -> test -> deploy -> review -> feedback Train
+		Custom named entities (person, event, skill, value) - pass array of labels and give it entities in represent (training) - pass data as JSON
+		Custom text classification (document text and classify to custom groups) 
+			Single label - bunch of possible lables (L1, L2, L3, L4) and bunch of texts. Text has only 1 label
+			Multi label - Text has multiple labels
+
+	Idea of pre-configured
+		Summarization (bunch of text -> key senteces about it)
+		PII Detection (IP addresses, email, street addresses, health info, name detection itp.)
+
+		About the learned - 2 important parameters:
+		Recalll - of the actuall labels how many was identified? ratio true positives to all labeled.
+			Imagine I search for "pizza" -> returned 4 docs, 3 correct, 1 was shit, there were 3 more good -> Recall = 3/6
+		Precision - 3/4 (4 docs returned, 3 correct)
+
+11. Questions answering and Text analysis
+
+	a) Question answering
+
+	About the pre-configured:
+	
+	We are going to create Knowledge Base based on files, online, chit-chat files, dbs. Then we can use from chat assistant
+	It is implemented as:
+	BOT -> Q to knowledge base -> Answer returned as JSON
+		We can have `top` parameter for top 3 best answers.
+
+	b) Text analysis
+
+		Extract info from text. Features:
+
+		- langugae detection
+		- key phrase extraction
+		- sentiment analysis
+		- named entity recognition
+		- entity linking
+
+12. Translation
+
+	Language detection
+	One-to-many translation
+	Transliteration - converting text from native script to alternative script (from 1 alphabet to diffrent alphabet)
+
+13. Speech Services
