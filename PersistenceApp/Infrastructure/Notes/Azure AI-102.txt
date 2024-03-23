@@ -1,4 +1,6 @@
-﻿1. Responsible AI
+﻿Based on https://www.youtube.com/watch?v=I7fdWafTcPY
+
+1. Responsible AI
 	- Fairness - ai system should treat all people the same, not beinn biased on gender, race etc.
 	- Relability and Savety - vehicles etc has to be safe, regular testing
 	- Privacy and security - models and data used to train them, np. our data in storage account shouldn't be used to train other shit
@@ -43,3 +45,108 @@
 		Text to speech
 		Speech translation
 		Speaker recognition
+
+	Decision making:
+		Anomaly detection (f.e. temperature rising)
+		Content moderation
+		Content personalization (shopping cart)
+
+	Prebuild solutions:
+	- Forms recognizer
+	- Metrics adviser
+	- Video analyser for media
+	- Image reader
+	- BOT service (some kind of conversational interaction) - webchat, email interactions, teams and shit
+	- Cognitive search 
+		you have data your going to ingest to create an index and run diffrent types of search against this index to give result
+		you can enrich the index
+
+5. Deploying to Azure
+
+	Azure Cognitive Services
+	Provisioning service to subscription + region which give RESOURCE (Cognitive service resource)
+	When provisioning use name (np. eastus)
+
+	Resource can be:
+		- multi-service
+			it is a single restfull endpoint witch single access credential
+		- single-service
+		note: training might require diffrent resource
+
+		- resource ma endpoint uri
+		- Cognitive Services Account ma 2 klucze (account keY), mozna przegenerowywac 1 podczas uzycia 2giego itp.
+		Klucze powinny byc persystowane w key vaulcie.
+		Resourcy maja swoj firewall wiec mozna restrict access do nich (do np. konkretnych public IPs)
+		Service endpoints i private endpoints
+
+6. REST API and SDK
+
+	Need to know:
+	endpoint URI and Keys (best to read from keyVault)
+
+	We are creating JSON paylod in http to the endpoint and it responds with another json data.
+
+7. Pricing and monitoring
+
+	Paid based on number of interactions.
+	There is azure pricing calculator
+
+	- metrics, alerts, logs, same as in S4D + integration with event hub
+
+8. Deploying to container
+
+	We can run model locally (on-premise) in container for example for safety requirements (car, fabryka roboty itp.)
+
+	Microsoft Artifacts Registry - to persist this containers
+
+	Owe docker image robimy based of 'from image' (based on Azure Cognitive Services image), do ktorych uruchomienia potrzebujemy:
+	Billing.ApiKey,	BILLING.Endpoint URI, EULA (eula='accept') (End-User License Agreement)
+	wymagane jest jakies połaczenie internetowe do raportowania tych rzeczy i zgody na EULA, 
+	pobrania api keya, zeby autoryzowac sie poslugiwania servicami uruchomionymi lokalnie
+
+9. Visual Perception Services
+
+	Image analysis:
+		Sending picture of car -> returns some info about it (f.e. image description)
+		Można ten image skategoryzować, nadać mu tag (car, sun).
+		Może też miec object Car: {X, Y, Height, Top}
+		Mozna robic content moderation (filtrowac zdejcia przemoca), ratingowac zdjecia, robic celebrity recognition
+		Mozna robic miniaturki
+
+	Video analysis:
+		Facial recognition (detecting presence of indiviudal people in image)
+		OCR
+		Speech transcription
+		Key topics in the video
+		it can have idea of: Sentiment (positive video, negative video)
+		it can have idea of: Label - key themes, objects in the video
+		content moderation, scene segmentation
+
+		jesli chcemty rozpoznwaca ludzi, powinnismy miec Limited Access Approval
+
+	Image Clasification:
+		predict class label based on main subject of an image (vehicle, fruit, vegetable)
+		We have to train it.
+		Start with data (image) and label it -> train -> model 
+		Send other images to model and in will predict its a car with some specs. It is multilabel
+
+	Object detection
+		Znajdowanie obiektow na image
+
+	Facial Analysis
+		Face service, ensure privacy of that information
+		It will not say gender and not say age (it might be offensive for people - lol).
+		Sa w 2 servicy, ktore moga pomoc z detekcja twarzy. General computer vision service (hey, yes there is a face i jest tutaj)
+		i Face Service - go further - (yes there is a face and has some attributes, rozpoznaje nos, oczy, itp.)
+		Face service (where it is, info about it, detection and verification)
+		- Every face detection will have unique id and will be cached for 24h. (came in to building, left building)
+		- Face recognition, sklada sie to z Person Group i image, ktore pozwalaja wytrenowac ta usluge do rozpoznawania konkretnych ludzi,
+		that will be persisted
+
+	OCR
+		Znow sa 2 API do tego:
+		Read API - (read from images, read from pdf, small to large volume (book/magazines)) -  main service to use, handle large volume shit
+		Image Analysis API - (supported formats: JPEG, PNG, BMP, PDF, TIFF up to 2000 pages, less 500 MB)
+			obsluguje 164 print languages, 9 languages for handwritten text
+
+10. Language Understanding
