@@ -1,6 +1,7 @@
 ﻿Based on https://www.youtube.com/watch?v=I7fdWafTcPY
 https://raw.githubusercontent.com/johnthebrit/CertificationMaterials/main/whiteboards/AI-102-Whiteboard.png
 https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification#certification-practice-for-the-exam
+https://www.itexams.com/exam/AI-102?
 
 1. Responsible AI
 	- Fairness - ai system should treat all people the same, not beinn biased on gender, race etc.
