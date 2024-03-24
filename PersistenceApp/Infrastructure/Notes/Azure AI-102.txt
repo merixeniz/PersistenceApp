@@ -1,5 +1,6 @@
 ﻿Based on https://www.youtube.com/watch?v=I7fdWafTcPY
 https://raw.githubusercontent.com/johnthebrit/CertificationMaterials/main/whiteboards/AI-102-Whiteboard.png
+https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification#certification-practice-for-the-exam
 
 1. Responsible AI
 	- Fairness - ai system should treat all people the same, not beinn biased on gender, race etc.
@@ -198,3 +199,119 @@ https://raw.githubusercontent.com/johnthebrit/CertificationMaterials/main/whiteb
 	Transliteration - converting text from native script to alternative script (from 1 alphabet to diffrent alphabet)
 
 13. Speech Services
+
+	Speech to text
+		config files:
+		- SpeechConfig {location, key},  -> SpeechRecognizer, return text and duration of it
+		- AudioConfig (instead of microphone some other shit)
+
+	Text to speech
+		config files:
+		- SpeechConfig {location, key},  -> Speech synthesizer
+		- AudioConfig (instead of microphone some other shit)
+		- Audio format
+		- Voices to use
+
+		text to speech long audio api for whole book etc.
+
+		We can feed it in text or in SSML (speech synthesis mockup language) - we can have speaking styles, intonation, voices etc.
+
+14. Speech Translation
+	
+	Speech to text (original lang and translated text)
+	Synthesize translations
+		- event based 1:1 (1 input lang, 1 output lang)
+		- manual 1:n 
+		It has intent recognition (understand semantic meaning of spoken input)
+
+15. Decision making
+
+	Anomaly detection (2 types):
+		- 1 signal
+		- multi-signal
+
+	Content moderation
+		- work for both images and text
+
+	Content personalization 
+		- best decision (shopping cart idea)
+
+16. Forms recognizer and other pre-build solutions
+
+	JPEG, PNG, PDF, TIFF (500MB max) -> its returning json with text, selecion marks
+	USefull for business cards, invoices, Id cards, receipts, w2 forms
+
+	- Custom model
+		Create forms based on trainin on with OCR, label etc. Sample data can be in blob container. 1x fields file (json) to train
+
+	Other pre buiild solutions:
+	- Metrics adviser
+	- Video analyser for media
+	- Imersive reader - make content available for anyone (easy to read for example, add pictures, hightlight shit, translate, read it, split to syllabells)
+	- Bot service - conversational
+	- Cognitive search
+
+17. Bot service
+
+	Chat gpt, persist context, input as text, image, speech
+
+	Azure Bot Service
+		Bot Framework Service [REST endpoint]
+		Bot Framework SDK that calls rest endpoint
+			Development against SDK
+
+18. Azure Cognitive Service
+
+	Cloud native solution for indexing data and quering based on huge amount of data.
+
+	Data could be:
+		- blob
+		- database tables
+		- cosmos db
+		Data -> Azure Data Factory
+
+		More opportunities like: extracting text from image and add it to language.
+
+	Azure Cognitive Service Resource pricing tiers:
+		(F)ree, (B)asic, (S)tandard, (L)arge
+
+		Replicas to load balance queries to diffrent instances
+			Inside replicas there are Partitions. Every replica will have the same number of partitions
+		
+		Search units = Replicas * Partitions
+
+		More replicas = more resilience
+		Microsoft guatrantees 99.9% avability:
+		* 2 replicas for high availability read-only workloads
+		* 3 or more replicas for high availability read-write workloads
+		Search units max = 36
+
+		Enrichment comes from skillset. Durign the enrichment (dodawanie nowych danych do indekosawania) 
+		there might be created a PROJECTION into Knowledge Store (which is: JSON, table, file)
+
+		Skillset -> we can create cusotm skill (azure function with uri), create custom skill with WebApiSkill property which points to Azure Func URI
+	
+19. Azure OpenAI Services
+
+	LLM:
+		- GPT 3.5 Turbo / 4.0
+		- Embeddings -> to create vectors based on info
+		- DALL-E -> to create pictures
+
+	LLMs were trained on huge amounts of data.
+	We can leverage instances of this module.
+
+	The more specific the prompt -> the better response will be.
+
+	User prompt and System prompt (for more info/context)
+	Grounding prompt -> enhancing prompt
+
+	Tweak how this model will response with Temperature and top probability (np. more artistic, more strict, more imaginatory)
+
+	Grounding might add APIs to get data -> the model will work as orchestrator. We can add our own data.
+	Your own data:
+		- uploaded
+		- blob
+		- cognitive search index
+
+----------------------------------------------------------------------------------------------------------------------------------
