@@ -171,6 +171,7 @@ https://www.itexams.com/exam/AI-102?
 		Recalll - of the actuall labels how many was identified? ratio true positives to all labeled.
 			Imagine I search for "pizza" -> returned 4 docs, 3 correct, 1 was shit, there were 3 more good -> Recall = 3/6
 		Precision - 3/4 (4 docs returned, 3 correct)
+		F1 score is a function of precision and recall.
 
 11. Questions answering and Text analysis
 

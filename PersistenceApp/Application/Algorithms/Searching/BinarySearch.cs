@@ -7,18 +7,23 @@ namespace Application.Algorithms.Searching
         // input has to be sorted!
         public int Search(List<int> input, int target)
         {
-            var midPointer = (input.Count - 1) / 2;
+            int left = 0;
+            int right = input.Count - 1;
 
-            while (input[midPointer] != target)
+            while (left <= right)
             {
-                if (input[midPointer] > target)
-                    midPointer--;
+                int mid = left + (right - left) / 2;
 
-                if (input[midPointer] < target)
-                    midPointer++;
+                if (input[mid] == target)
+                    return mid;
+
+                if (input[mid] < target)
+                    left = mid + 1;
+                else
+                    right = mid - 1;
             }
 
-            return midPointer;
+            return -1;
         }
     }
 }

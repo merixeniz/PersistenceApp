@@ -15,6 +15,7 @@ namespace ConsoleApp
     {
         static async Task Main(string[] args)
         {
+
             //var strs = new[] { "abc", "anno" };
             //TakeUForward.Arrays.LongestCommonPrefix(strs);
 

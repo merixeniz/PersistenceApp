@@ -21,6 +21,7 @@ namespace Persistence.Tests
             sut.Search(input, 2).Should().Be(6);
             sut.Search(input, -5).Should().Be(0);
             sut.Search(input, 0).Should().Be(4);
+            sut.Search(input, 9).Should().Be(-1);
         }
     }
 }
