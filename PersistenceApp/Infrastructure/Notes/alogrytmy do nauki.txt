@@ -23,3 +23,84 @@ Na teœcie pytania w stylu - jaki bêdzie wynik dzia³a aplikacji (np. przyk³ad z k
 - praktyczne pytanie z linq - coœ tam wybraæ, usun¹æ i wrzuciæ do nowej kolekcji 
 - napisaæ zapytania SQL z left joinem, grupowaniem; zaprojektowaæ prosta strukturê danych 
 Podczas rozmowy telefonicznej by³y pytania m.in. o SOLID, MVC
+
+Pytania Shiji:
+
+- threading 
+ - parallel vs async programming
+	- what does await, async
+	- should we return void from async methods
+	- how await works underneath
+	- does taks create a new thread
+	- diffrence between Task.WaitAll() and Task.WhenAll(), (whenAll returns a task and does not block a thread)
+	- what is a ValueTask and when can we use it
+  - synchronization construcs (optional)
+  - deadlock, starvation, etc (optional)
+- LINQ Select vs SelectMany, GroupBy
+- What is diff between Func and Expression
+- IDisposable and using, how to we use it together
+
+- diffrence between throw and trow ex
+	- how do we build try-catch, which exception type should be first, which one should be last
+
+asp.core:
+- middlware
+- what is routing in asp net
+- how do we use attributes and waht they mean
+- build-in DI - many implementations of same interface (what if we put IEnumerable<T> or T to constructor)
+- object liftime (scoped, transient, singleton)
+- what is HostedService
+
+DB:
+- index - what is it, when it is used (index on cols A,B,C, query with A,B; A,C; query with C)
+- concurrency control - optimistic vs pessimistic
+- what if we have to many indexes
+- what is the problem of not having indexes
+
+EF Core: 
+- code first vs database first
+- migrations
+- what will happen when you cal ToList() on IQueryable
+- deiffrence between IQueryable and IEnumerable (supports lazy loading)
+- what will happen when we call Find() on DBContext
+- what if we pass a func instead of expression .Where((func) => x== true);
+
+devops: 
+- do you know what docker is? Diffrence between image and container
+- why do we dockerize
+
+TESTS: 
+- diffrence between an unit and integration tests
+- task 1 - is this an unit test
+- how to change it to proper unit test
+- task 2 - is the test ok? -> usage of DateTime.Now makes it not deterministic
+- propose a solution
+- do you know any libraries for creating mocks
+- mock and stub - diffrences (optional)
+
+GIT: 
+- diffrence between merge and rebase
+- gitFLow
+
+ddd:
+- aggregate, aggregate root
+- value object
+- domain event
+
+microserives:
+- cqrs
+- consequences of having 2 databases for read and write (eventual consistency)
+- transactions in distributed systems
+	- what is a saga
+- outbox pattern
+- communicationbetween services - sync vs async - use cases
+- message bus - why use it, ask if the candidate knows any, describe how it works
+- monolit vs distributed system
+	- why do we use distributed system
+	- what are the problems of distributed systems
+- what give us distributed databases like ElasticSearch (HA - high availability), what are to consequences (consistency)
+
+general: 
+- what is a load balancer?
+- what is a proxy?
+- what is a transient error and how to deal with it (retry policy)
