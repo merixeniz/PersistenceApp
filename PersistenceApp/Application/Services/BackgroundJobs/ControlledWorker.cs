@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Services.BackgroundJobs
 {
-    public class ControlledWorker : IHostedService, IDisposable
+    public class ControlledWorker : IHostedService
     {
         private readonly ILogger _log;
         private Timer _timer;
@@ -15,22 +15,18 @@ namespace Application.Services.BackgroundJobs
             _log = log;
         }
 
-        public void Dispose()
-        {
-            _timer.Dispose();
-        }
-
         public Task StartAsync(CancellationToken cancellationToken)
         {
             _log.LogInformation("RecureHostedService is Starting");
-            _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(500));
+            _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(1000));
             return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _log.LogInformation("RecureHostedService is Stopping");
-            _timer?.Change(Timeout.Infinite, 0);
+            using (_timer)
+                _timer?.Change(Timeout.Infinite, 0);
             return Task.CompletedTask;
         }
         private void DoWork(object state)

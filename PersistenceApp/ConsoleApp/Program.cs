@@ -5,6 +5,10 @@ using Application.Algorithms.TakeYouForward;
 using Application.Algorithms.Trees;
 using Application.Extensions;
 using Application.Other;
+using ConsoleApp.CustomMediatr.Commands;
+using ConsoleApp.CustomMediatr.Dispatcher;
+using ConsoleApp.CustomMediatr.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using Entities.Dto;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
@@ -15,7 +19,17 @@ namespace ConsoleApp
     {
         static async Task Main(string[] args)
         {
+            var serviceProvider = DependencyInjection.InitializeContainer();
+            var dispatcher = serviceProvider.GetService<ICommandDispatcher>();
 
+            var command = new MessageCommand(1, "Hello, World!");
+            dispatcher?.Dispatch(command);
+
+            Console.WriteLine("Hello, World!");
+        }
+
+        private static async Task OldMain()
+        {
             //var strs = new[] { "abc", "anno" };
             //TakeUForward.Arrays.LongestCommonPrefix(strs);
 
@@ -58,9 +72,9 @@ namespace ConsoleApp
             //ExampleUsage.FuncExampleMethod();
             //ExampleUsage.PredicateTExampleMethod();
 
-            //Task.Run(async () => await MethodAsync().ConfigureAwait(false)).Wait();
-            //await MethodAsync();
-            ////await Task.Run(() => MethodAsync());
+            Task.Run(async () => await MethodAsync().ConfigureAwait(false)).Wait();
+            await MethodAsync();
+            await Task.Run(() => MethodAsync());
 
             //var output = SpanFun.SpanPlayground();
 
@@ -76,10 +90,7 @@ namespace ConsoleApp
             //RangeOperatorPlayground.ChangeOrderOfElementsInCollection();
 
             BinaryTree.CreateAndInvertBinaryTree();
-
-            Console.WriteLine("Hello, World!");
         }
-
         private static async Task MethodAsync()
         {
             await Task.Delay(5);

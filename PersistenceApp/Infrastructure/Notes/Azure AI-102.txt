@@ -317,4 +317,16 @@ https://www.itexams.com/exam/AI-102?
 		- cognitive search index
 
 ----------------------------------------------------------------------------------------------------------------------------------
+26 marca 2024 20:53 - 1st test
+30.04.2024 20:53 - 6th test - 95%
+
 50%, 41%, 54%, 57%, 61%, 67%
+82%, 82%, 80%, 82%, 87%, 95%
+
+
+
+Speech Service: 
+	Location and one of keys - 3rd test
+
+User interface for a Conversational AI Agent?
+	Azure Bot Service
