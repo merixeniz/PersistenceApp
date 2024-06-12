@@ -34,6 +34,17 @@ namespace Application.Algorithms.TakeYouForward
                 return concatenatedValues;
             }
 
+            public static Dictionary<char, int> FrequencySortDict(string input)
+            {
+                if (string.IsNullOrEmpty(input)) return new Dictionary<char, int>();
+
+                var result = input.GroupBy(@char => @char)
+                    .OrderByDescending(g => g.Count())
+                    .ToDictionary(g => g.First(), g => g.Count());
+
+                return result;
+            }
+
             //Maximum Nesting Depth of the Parentheses
             public static int MaxDepth(string s)
             {

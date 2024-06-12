@@ -39,6 +39,39 @@ namespace Application.Algorithms.MultiplePointer
             return subStrings.OrderByDescending(x => x.Length).First();
         }
 
+        public string FindLongestSubstringWithoutCharRepetitionGpt(string input)
+        {
+            if (input == null)
+                return null;
+
+            input = input.ToLower(); // case insensitive
+
+            int leftPointer = 0;
+            int maxLength = 0;
+            int startIndexOfMax = 0;
+            var charIndexMap = new Dictionary<char, int>();
+
+            for (int rightPointer = 0; rightPointer < input.Length; rightPointer++)
+            {
+                char currentChar = input[rightPointer];
+
+                if (charIndexMap.ContainsKey(currentChar) && charIndexMap[currentChar] >= leftPointer)
+                {
+                    leftPointer = charIndexMap[currentChar] + 1;
+                }
+
+                charIndexMap[currentChar] = rightPointer;
+
+                int currentLength = rightPointer - leftPointer + 1;
+                if (currentLength > maxLength)
+                {
+                    maxLength = currentLength;
+                    startIndexOfMax = leftPointer;
+                }
+            }
+
+            return input.Substring(startIndexOfMax, maxLength);
+        }
         public int LengthOfLongestSubstring(string s)
         {
             int result = 0;

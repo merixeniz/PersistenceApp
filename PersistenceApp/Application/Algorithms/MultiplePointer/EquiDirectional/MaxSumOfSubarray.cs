@@ -6,7 +6,6 @@ namespace Application.Algorithms.MultiplePointer.EquiDirectional
     // given an array of integers n and a prositive number k, find the maximum sum of any contiguous subarray of size k
     public class MaxSumOfSubarray
     {
-
         public int FindMaxSumOfSubArrayOfSizeK(int[] input, int k)
         {
             int leftPointer = 0;

@@ -7,15 +7,13 @@ namespace ConsoleApp.CustomMediatr.Handlers
     {
         public void Handle<T>(T command) where T : ICommand
         {
-            if (command == null) throw new ArgumentNullException(nameof(command));
+            if (command == null) 
+                throw new ArgumentNullException(nameof(command));
 
-            if (command is MessageCommand messageCommand)
-            {
-                Console.WriteLine($"MessageCommandHandler: Id={messageCommand.Id}, Message={messageCommand.Message}");
-                return;
-            }
+            if (command is not MessageCommand messageCommand)
+                throw new ArgumentException($"Invalid command type: {command.GetType().Name}");
 
-            throw new ArgumentException($"Invalid command type: {command.GetType().Name}");
+            Console.WriteLine($"MessageCommandHandler: Id={messageCommand.Id}, Message={messageCommand.Message}");
         }
     }
 }

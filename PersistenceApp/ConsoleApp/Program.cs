@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Application.Algorithms;
 using Application.Algorithms.OOP;
 using Application.Algorithms.TakeYouForward;
@@ -21,11 +22,23 @@ namespace ConsoleApp
         {
             var serviceProvider = DependencyInjection.InitializeContainer();
             var dispatcher = serviceProvider.GetService<ICommandDispatcher>();
-
             var command = new MessageCommand(1, "Hello, World!");
             dispatcher?.Dispatch(command);
-
+            var tmp = TryReturn();
             Console.WriteLine("Hello, World!");
+        }
+
+        static int TryReturn()
+        {
+            try
+            {
+                Console.WriteLine("W bloku try");
+                return 1;
+            }
+            finally
+            {
+                Console.WriteLine("W bloku finally");
+            }
         }
 
         private static async Task OldMain()

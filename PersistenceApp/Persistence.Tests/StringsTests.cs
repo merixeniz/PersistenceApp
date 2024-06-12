@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Application.Algorithms.TakeYouForward;
-using Application.Algorithms.Trees;
 using FluentAssertions;
 using Xunit;
 
@@ -22,6 +17,19 @@ namespace Persistence.Tests
         public void FrequencySortTest(string input, string result)
         {
             TakeUForward.Strings.FrequencySort(input).Should().Be(result);
+        }
+
+        [Fact]
+        public void FrequencySortDictTest()
+        {
+            var input = "aaabbc";
+            var result = new Dictionary<char, int>
+            {
+                { 'a', 3},
+                { 'b', 2},
+                { 'c', 1}
+            };
+            TakeUForward.Strings.FrequencySortDict(input).Should().BeEquivalentTo(result);
         }
 
         [Theory]

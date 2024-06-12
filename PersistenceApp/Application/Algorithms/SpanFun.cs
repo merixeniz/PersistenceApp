@@ -14,6 +14,7 @@ namespace Application.Algorithms
 
             var span = CollectionsMarshal.AsSpan(list);
             span.Reverse();
+            span[0] = 5;
             list.Add(10); // will be in list, wont be in span
 
             return list;
