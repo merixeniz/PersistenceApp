@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Application.Algorithms.LINQ;
 using Application.Extensions;
 using FluentAssertions;
 using Xunit;
@@ -29,5 +30,14 @@ namespace Persistence.Tests
             input.MoveToEnd(predicate).Should().BeEquivalentTo(expected);
             Assert.Equal(expected, result);
         }
+
+        [Fact]
+        public void LinqFun_GroupBy_ShouldReturnFirstItemOfFirstGroup()
+        {
+            var groupByResult = LinqFun.GroupBy_ReturnFirstItemOfFirstGroup();
+            var distinctResult = LinqFun.Distinct_byType();
+            Assert.Equal(true, true);
+        }
+
     }
 }

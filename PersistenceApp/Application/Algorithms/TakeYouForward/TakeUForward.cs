@@ -75,6 +75,24 @@ namespace Application.Algorithms.TakeYouForward
                 }
                 return output;
             }
+            public static int[] ZerosToAnEnd(int[] nums)
+            {
+                int n = nums.Length;
+                int left = 0, right = 0;
+
+                while (right < n)
+                {
+                    if (nums[right] != 0)
+                    {
+                        (nums[left], nums[right]) = (nums[right], nums[left]);
+
+                        left++;
+                    }
+                    right++;
+                }
+
+                return nums;
+            }
             public static int GetSingleElement(int[] arr)
             {
                 // var input = new int[] { 4, 1, 2, 1, 2 };
@@ -174,7 +192,7 @@ namespace Application.Algorithms.TakeYouForward
                 return (diff, dayBuy, daySell);
             }
 
-            
+
         }
 
 

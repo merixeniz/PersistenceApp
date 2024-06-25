@@ -9,6 +9,8 @@
 const groupBy = () => {
     const groupedInventory = inventory.reduce((acc, item) => {
         const { type, ...rest } = item;
+        const { type, ...rest } = item;
+
         if (!acc[type]) {
             acc[type] = [];
         }

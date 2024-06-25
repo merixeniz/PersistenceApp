@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Entities.Dto;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -20,12 +21,69 @@ namespace ConsoleApp
     {
         static async Task Main(string[] args)
         {
-            var serviceProvider = DependencyInjection.InitializeContainer();
-            var dispatcher = serviceProvider.GetService<ICommandDispatcher>();
-            var command = new MessageCommand(1, "Hello, World!");
-            dispatcher?.Dispatch(command);
-            var tmp = TryReturn();
-            Console.WriteLine("Hello, World!");
+            var dict = new Dictionary<int, string>
+            {
+                { 5, "asd" }
+            };
+            var list = new List<int> { 1, 2, 3, 4, 5 };
+            var array = new[] { 1, 2, 3, 4, 5 };
+            var que = new Queue<int>([1, 2, 3, 4, 5]);
+            var firstQueue = que.Dequeue();
+            var stack = new Stack<int>([1, 2, 3, 4, 5]);
+
+            var input = Enumerable.Range(0, 10).ToArray();
+            var result = string.Join(", ", input);
+            Console.WriteLine(result);
+            Console.WriteLine();
+
+            SumOfWindow(input, 3);
+
+            await TaskFun.MainAsync();
+
+            //var serviceProvider = DependencyInjection.InitializeContainer();
+            //var dispatcher = serviceProvider.GetService<ICommandDispatcher>();
+            //var command = new MessageCommand(1, "Hello, World!");
+            //dispatcher?.Dispatch(command);
+            //var tmp = TryReturn();
+            //Console.WriteLine("Hello, World!");
+        }
+
+        private static int SumOfWindow(int[]? input, int k)
+        {
+            if (input is null || input.Length == 0 || k < 1) return -1;
+
+            var sum = input[0];
+            var result = sum;
+            var right = 0;
+
+            for (right = 0; right < k; right++)
+            {
+                sum += input[right];
+
+                if (sum > result)
+                    result = sum;
+            }
+
+            for (right = k; right < input.Length; right++)
+            {
+                sum += input[right] - input[right - k];
+
+                if (sum > result)
+                    result = sum;
+            }
+
+            Console.WriteLine($"Highest sum: {sum}");
+            return sum;
+        }
+
+        private static int SumLeftToRight(int[] input, int left, int right)
+        {
+            int sum = 0;
+            for (var i = left; i <= right; i++)
+            {
+                sum += input[i];
+            }
+            return sum;
         }
 
         static int TryReturn()
@@ -40,7 +98,6 @@ namespace ConsoleApp
                 Console.WriteLine("W bloku finally");
             }
         }
-
         private static async Task OldMain()
         {
             //var strs = new[] { "abc", "anno" };

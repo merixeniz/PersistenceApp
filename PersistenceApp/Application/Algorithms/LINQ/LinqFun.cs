@@ -6,6 +6,22 @@ using System.Threading.Tasks;
 
 namespace Application.Algorithms.LINQ
 {
+    // LINQ -> js
+    // Select -> map
+    // SelectMany -> flatMap
+    // Aggregate -> reduce
+    // Where -> filter
+    // OrderBy -> sort
+    // GroupBy -> groupBy / reduce
+    // Contains -> includes
+    // Any -> some
+    // All -> every
+    // Exist/Contains -> find
+    // Distinct -> new Set(array)
+    // Count -> length 
+    // Sum -> reduce
+    // Max/Min -> Math.max(...array) / Math.min(...array)
+    // FirstOrDefault -> find || defaultValue;
     public class InventoryItem
     {
         public string Name { get; set; }
@@ -26,10 +42,21 @@ namespace Application.Algorithms.LINQ
     {
         public static InventoryItem GroupBy_ReturnFirstItemOfFirstGroup()
         {
-            var result = InventoryItem.Inventory.GroupBy(x => x.Type).ToList();
+            var result = InventoryItem.Inventory.GroupBy(x => x.Type).ToArray();
             var firstGroup = result.First();
             var itemsOfFirstGroup = firstGroup.Select(x => x).ToArray();
             return itemsOfFirstGroup.First();
+        }
+
+        public static InventoryItem[] Distinct_byType()
+        {
+            return InventoryItem.Inventory.DistinctBy(x => x.Type).ToArray();
+        }
+
+        public static InventoryItem[] Distinct_byType_Hashset()
+        {
+            var hashSet = new HashSet<string>();
+            return InventoryItem.Inventory.Where(x => hashSet.Add(x.Type)).ToArray();
         }
     }
 }
