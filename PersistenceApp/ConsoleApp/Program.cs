@@ -42,9 +42,6 @@ internal class Program
         var eventStore = serviceProvider.GetService<IEventStore>() ?? new InMemoryEventStore();
         var bankAccountRepository = serviceProvider.GetService<IBankAccountRepository>() ?? new InMemoryBankAccountRepository();
 
-        var command = new MessageCommand(1, "Hello, World!");
-        await dispatcher.DispatchAsync(command);
-
         var accountId = Guid.NewGuid();
         var targetAccountId = Guid.NewGuid();
         var bankAccount1 = new BankAccount(accountId);
@@ -52,11 +49,20 @@ internal class Program
         bankAccountRepository.Add(bankAccount1);
         bankAccountRepository.Add(bankAccount2);
 
-        //await dispatcher.DispatchAsync(new DepositCommand(accountId, 100m));
-        //await dispatcher.DispatchAsync(new WithdrawCommand(accountId, 10m));
-        await dispatcher.DispatchAsync(new TransferCommand(accountId, targetAccountId, 20m));
+        await dispatcher.DispatchAsync(new DepositCommand(accountId, 100m));
+        //var undoDeposit = (await eventStore.GetEventsAsync(accountId)).Last();
+        //await dispatcher.DispatchAsync(new UndoCommand(undoDeposit.EventId));
 
-        var lastEvent = (await eventStore.GetEventsAsync(accountId)).Last();
+        await dispatcher.DispatchAsync(new WithdrawCommand(accountId, 10m));
+        //var undoWithdraw = (await eventStore.GetEventsAsync(accountId)).Last();
+        //await dispatcher.DispatchAsync(new UndoCommand(undoWithdraw.EventId));
+
+
+        await dispatcher.DispatchAsync(new TransferCommand(accountId, targetAccountId, 20m));
+        //var undoTransfer = (await eventStore.GetEventsAsync(accountId)).Last();
+        //await dispatcher.DispatchAsync(new UndoCommand(undoTransfer.EventId));
+        
+        //var lastEvent = (await eventStore.GetEventsAsync(accountId)).Last();
         //await dispatcher.DispatchAsync(new UndoCommand(lastEvent.EventId));
 
         var stateRebuilder = new StateRebuilder(eventStore, bankAccountRepository);

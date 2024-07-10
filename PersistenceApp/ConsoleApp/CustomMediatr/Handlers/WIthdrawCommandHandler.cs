@@ -7,10 +7,12 @@ namespace ConsoleApp.CustomMediatr.Handlers;
 internal class WithdrawCommandHandler : ICommandHandler<WithdrawCommand>
 {
     private readonly IEventStore _eventStore;
+    private readonly IBankAccountRepository _bankAccountRepository;
 
-    public WithdrawCommandHandler(IEventStore eventStore)
+    public WithdrawCommandHandler(IEventStore eventStore, IBankAccountRepository bankAccountRepository)
     {
         _eventStore = eventStore;
+        _bankAccountRepository = bankAccountRepository;
     }
 
     public async Task HandleAsync(WithdrawCommand command)
@@ -20,6 +22,9 @@ internal class WithdrawCommandHandler : ICommandHandler<WithdrawCommand>
 
         var withdrawEvent = new WithdrawnEvent(command.AccountId, command.Amount, DateTimeOffset.UtcNow, Guid.NewGuid());
         await _eventStore.SaveEventAsync(withdrawEvent);
+
+        var bankAccount = await _bankAccountRepository.GetByIdAsync(command.AccountId);
+        bankAccount.Apply(withdrawEvent);
 
         Console.WriteLine($"WithdrawCommandHandler: AccountId={command.AccountId}, Amount={command.Amount}");
     }

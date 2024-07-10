@@ -1,21 +1,19 @@
 ﻿using ConsoleApp.CustomMediatr.Commands;
+using ConsoleApp.CustomMediatr.Entities;
 using ConsoleApp.CustomMediatr.Events;
 using ConsoleApp.CustomMediatr.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp.CustomMediatr.Handlers
 {
     internal class UndoCommandHandler : ICommandHandler<UndoCommand>
     {
         private readonly IEventStore _eventStore;
+        private readonly IBankAccountRepository _bankAccountRepository;
 
-        public UndoCommandHandler(IEventStore eventStore)
+        public UndoCommandHandler(IEventStore eventStore, IBankAccountRepository bankAccountRepository)
         {
             _eventStore = eventStore;
+            _bankAccountRepository = bankAccountRepository;
         }
 
         public async Task HandleAsync(UndoCommand command)
@@ -27,13 +25,42 @@ namespace ConsoleApp.CustomMediatr.Handlers
             if (eventToUndo == null)
                 throw new ArgumentException($"Event not found: {command.EventId}");
 
-            IEvent reversedEvent = eventToUndo switch
+            BankAccount bankAccount;
+            BankAccount fromAccount;
+            BankAccount toAccount;
+
+            IEvent reversedEvent;
+            switch (eventToUndo)
             {
-                DepositedEvent deposited => new WithdrawnEvent(deposited.AggregateId, deposited.Amount, DateTimeOffset.UtcNow, Guid.NewGuid()),
-                WithdrawnEvent withdrawn => new DepositedEvent(withdrawn.AggregateId, withdrawn.Amount, DateTimeOffset.UtcNow, Guid.NewGuid()),
-                TransferredEvent transferred => new TransferredEvent(transferred.AggregateId, transferred.FromAggregateId, transferred.Amount, DateTimeOffset.UtcNow, Guid.NewGuid()),
-                _ => throw new InvalidOperationException($"Cannot undo event type: {eventToUndo.GetType().Name}")
-            };
+                case DepositedEvent deposited:
+                    var withdrawnEvent = new WithdrawnEvent(deposited.AggregateId, deposited.Amount, DateTimeOffset.UtcNow,
+                        Guid.NewGuid());
+                    bankAccount = await _bankAccountRepository.GetByIdAsync(deposited.AggregateId);
+                    bankAccount.Apply(withdrawnEvent);
+                    reversedEvent = withdrawnEvent;
+                    break;
+                case WithdrawnEvent withdrawn:
+                    var depositedEvent = new DepositedEvent(withdrawn.AggregateId, withdrawn.Amount, DateTimeOffset.UtcNow,
+                        Guid.NewGuid());
+                    bankAccount = await _bankAccountRepository.GetByIdAsync(withdrawn.AggregateId);
+                    bankAccount.Apply(depositedEvent);
+                    reversedEvent = depositedEvent;
+                    break;
+                case TransferredEvent transferred:
+                    var transferredEvent = new TransferredEvent(transferred.ToAggregateId, transferred.FromAggregateId,
+                        transferred.Amount, DateTimeOffset.UtcNow, Guid.NewGuid());
+
+                    fromAccount = await _bankAccountRepository.GetByIdAsync(transferred.ToAggregateId);
+                    toAccount = await _bankAccountRepository.GetByIdAsync(transferred.FromAggregateId);
+
+                    fromAccount.Apply(transferredEvent);
+                    toAccount.Apply(transferredEvent);
+
+                    reversedEvent = transferredEvent;
+                    break;
+                default:
+                    throw new InvalidOperationException($"Cannot undo event type: {eventToUndo.GetType().Name}");
+            }
 
             await _eventStore.SaveEventAsync(reversedEvent);
             Console.WriteLine($"UndoCommandHandler: Undone event {command.EventId}");

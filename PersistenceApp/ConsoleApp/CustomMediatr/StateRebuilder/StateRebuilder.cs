@@ -33,11 +33,12 @@ public class StateRebuilder
                 case WithdrawnEvent withdrawnEvent:
                     bankAccount.Apply(withdrawnEvent);
                     break;
-                case TransferredEvent transferredEvent when transferredEvent.FromAggregateId == aggregateId:
-                    bankAccount.Apply(transferredEvent);
-                    break;
-                case TransferredEvent transferredEvent when transferredEvent.ToAggregateId == aggregateId:
-                    bankAccount.Apply(transferredEvent);
+                case TransferredEvent transferredEvent:
+                    var fromAccount = await _repository.GetByIdAsync(transferredEvent.FromAggregateId);
+                    var toAccount = await _repository.GetByIdAsync(transferredEvent.ToAggregateId);
+
+                    fromAccount.Apply(transferredEvent);
+                    toAccount.Apply(transferredEvent);
                     break;
                 case ReversedEvent reversedEvent:
                     bankAccount.Apply(reversedEvent);
