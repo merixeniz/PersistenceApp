@@ -1,23 +1,32 @@
 ﻿using ConsoleApp.CustomMediatr.Interfaces;
 
-namespace ConsoleApp.CustomMediatr.Dispatcher
+namespace ConsoleApp.CustomMediatr.Dispatcher;
+
+internal class CommandDispatcher : ICommandDispatcher
 {
-    internal class CommandDispatcher : ICommandDispatcher
+    private readonly IServiceProvider _serviceProvider;
+
+    public CommandDispatcher(IServiceProvider serviceProvider)
     {
-        private readonly IServiceProvider _serviceProvider;
+        _serviceProvider = serviceProvider;
+    }
+    //public void Dispatch<T>(T command) where T : ICommand
+    //{
+    //    if (command == null) throw new ArgumentNullException(nameof(command));
 
-        public CommandDispatcher(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
-        public void Dispatch<TCommand>(TCommand command) where TCommand : ICommand
-        {
-            if (command == null) throw new ArgumentNullException(nameof(command));
+    //    var handler = _serviceProvider.GetService(typeof(ICommandHandler<T>)) as ICommandHandler<T>;
+    //    if (handler == null) throw new ArgumentException($"Handler not found for command type: {command.GetType().Name}");
 
-            var handler = _serviceProvider.GetService(typeof(ICommandHandler<TCommand>)) as ICommandHandler<TCommand>;
-            if (handler == null) throw new ArgumentException($"Handler not found for command type: {command.GetType().Name}");
+    //    handler.Handle(command);
+    //}
 
-            handler.Handle(command);
-        }
+    public async Task DispatchAsync<T>(T command) where T : ICommand
+    {
+        if (command == null) throw new ArgumentNullException(nameof(command));
+
+        var handler = _serviceProvider.GetService(typeof(ICommandHandler<T>)) as ICommandHandler<T>;
+        if (handler == null) throw new ArgumentException($"Handler not found for command type: {command.GetType().Name}");
+
+        await handler.HandleAsync(command);
     }
 }

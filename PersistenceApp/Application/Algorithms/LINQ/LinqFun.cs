@@ -28,6 +28,17 @@ namespace Application.Algorithms.LINQ
         public string Type { get; set; }
         public int Quantity { get; set; }
 
+        public delegate bool MyDelegate(string input);
+        public MyDelegate MyDelegateName;
+
+        public Action ActionDelegate;
+        public Func<string, bool> FuncDelegate;
+        public InventoryItem()
+        {
+            MyDelegateName = MyMethod;
+            FuncDelegate = MyMethod;
+        }
+
         public static List<InventoryItem> Inventory =
         [
             new InventoryItem { Name = "asparagus", Type = "vegetables", Quantity = 5 },
@@ -36,6 +47,50 @@ namespace Application.Algorithms.LINQ
             new InventoryItem { Name = "cherries", Type = "fruit", Quantity = 5 },
             new InventoryItem { Name = "fish", Type = "meat", Quantity = 22 }
         ];
+
+        public static bool MyMethod(string input)
+        {
+            var tmp = GetItems().ToArray();
+
+            foreach (var inventoryItem in tmp)
+            {
+
+            }
+
+            foreach (var inventoryItem in tmp)
+            {
+
+            }
+
+            foreach (var number in GetEvenNumbers().TakeWhile(n => n < 20))
+            {
+                Console.WriteLine(number);
+            }
+
+            return true;
+        }
+
+        public static List<InventoryItem> GetInventory()
+        {
+            return Inventory;
+        }
+
+        public static IEnumerable<InventoryItem> GetItems()
+        {
+            foreach (var item in Inventory)
+            {
+                yield return item;
+            }
+        }
+
+        public static IEnumerable<int> GetEvenNumbers()
+        {
+            for (int i = 0; ; i++)
+            {
+                if (i % 2 == 0)
+                    yield return i;
+            }
+        }
     }
 
     public class LinqFun
@@ -58,5 +113,7 @@ namespace Application.Algorithms.LINQ
             var hashSet = new HashSet<string>();
             return InventoryItem.Inventory.Where(x => hashSet.Add(x.Type)).ToArray();
         }
+
+
     }
 }

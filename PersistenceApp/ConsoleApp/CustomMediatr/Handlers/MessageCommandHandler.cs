@@ -1,19 +1,27 @@
 ﻿using ConsoleApp.CustomMediatr.Commands;
 using ConsoleApp.CustomMediatr.Interfaces;
 
-namespace ConsoleApp.CustomMediatr.Handlers
+namespace ConsoleApp.CustomMediatr.Handlers;
+
+internal class MessageCommandHandler : ICommandHandler<MessageCommand>
 {
-    internal class MessageCommandHandler : ICommandHandler<MessageCommand>
+    public void Handle<T>(T command) where T : ICommand
     {
-        public void Handle<T>(T command) where T : ICommand
-        {
-            if (command == null) 
-                throw new ArgumentNullException(nameof(command));
+        if (command == null)
+            throw new ArgumentNullException(nameof(command));
 
-            if (command is not MessageCommand messageCommand)
-                throw new ArgumentException($"Invalid command type: {command.GetType().Name}");
+        if (command is not MessageCommand messageCommand)
+            throw new ArgumentException($"Invalid command type: {command.GetType().Name}");
 
-            Console.WriteLine($"MessageCommandHandler: Id={messageCommand.Id}, Message={messageCommand.Message}");
-        }
+        Console.WriteLine($"MessageCommandHandler: Id={messageCommand.Id}, Message={messageCommand.Message}");
+    }
+
+    public Task HandleAsync(MessageCommand command)
+    {
+        if (command == null)
+            throw new ArgumentNullException(nameof(command));
+
+        Console.WriteLine($"MessageCommandHandler: Id={command.Id}, Message={command.Message}");
+        return Task.CompletedTask;
     }
 }

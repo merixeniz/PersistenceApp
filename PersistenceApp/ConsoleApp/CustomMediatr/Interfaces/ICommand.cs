@@ -1,8 +1,5 @@
-﻿using System;
+﻿namespace ConsoleApp.CustomMediatr.Interfaces;
 
-namespace ConsoleApp.CustomMediatr.Interfaces
+internal interface ICommand
 {
-    internal interface ICommand
-    {
-    }
 }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ConsoleApp.CustomMediatr.Interfaces;
 
-namespace ConsoleApp.CustomMediatr.Interfaces
+internal interface ICommandDispatcher
 {
-    internal interface ICommandDispatcher
-    {
-        public void Dispatch<TCommand>(TCommand command) where TCommand : ICommand;
-    }
+    //public void Dispatch<T>(T command) where T : ICommand;
+    public Task DispatchAsync<T>(T command) where T : ICommand;
 }

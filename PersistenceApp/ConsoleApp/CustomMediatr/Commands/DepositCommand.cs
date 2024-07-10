@@ -2,6 +2,4 @@
 
 namespace ConsoleApp.CustomMediatr.Commands;
 
-internal record MessageCommand(int Id, string Message) : ICommand
-{
-}
+public record DepositCommand(Guid AccountId, decimal Amount) : ICommand;

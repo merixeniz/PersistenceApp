@@ -104,3 +104,7 @@ general:
 - what is a load balancer?
 - what is a proxy?
 - what is a transient error and how to deal with it (retry policy)
+
+kowariancja i kontrawariancja:
+'napisz przyklad w c# z generics i interfejsem uzywajacym slow kluczoywch <in > i <out >'
+https://chatgpt.com/share/96e2a1a1-f5ce-4d35-abf7-a13dc886a274

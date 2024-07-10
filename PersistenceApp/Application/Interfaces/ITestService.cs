@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+
+public interface ITestService
 {
-    public interface ITestService
-    {
-        Task TestMethod();
-    }
+    Task TestMethod();
 }
