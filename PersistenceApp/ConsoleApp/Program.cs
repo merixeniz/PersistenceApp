@@ -53,15 +53,15 @@ internal class Program
         //var undoDeposit = (await eventStore.GetEventsAsync(accountId)).Last();
         //await dispatcher.DispatchAsync(new UndoCommand(undoDeposit.EventId));
 
-        await dispatcher.DispatchAsync(new WithdrawCommand(accountId, 10m));
+        //await dispatcher.DispatchAsync(new WithdrawCommand(accountId, 10m));
         //var undoWithdraw = (await eventStore.GetEventsAsync(accountId)).Last();
         //await dispatcher.DispatchAsync(new UndoCommand(undoWithdraw.EventId));
 
 
         await dispatcher.DispatchAsync(new TransferCommand(accountId, targetAccountId, 20m));
-        //var undoTransfer = (await eventStore.GetEventsAsync(accountId)).Last();
-        //await dispatcher.DispatchAsync(new UndoCommand(undoTransfer.EventId));
-        
+        var undoTransfer = (await eventStore.GetEventsAsync(accountId)).Last();
+        await dispatcher.DispatchAsync(new UndoCommand(undoTransfer.EventId));
+
         //var lastEvent = (await eventStore.GetEventsAsync(accountId)).Last();
         //await dispatcher.DispatchAsync(new UndoCommand(lastEvent.EventId));
 

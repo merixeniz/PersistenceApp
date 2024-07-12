@@ -21,11 +21,13 @@ internal class WithdrawCommandHandler : ICommandHandler<WithdrawCommand>
             throw new ArgumentNullException(nameof(command));
 
         var withdrawEvent = new WithdrawnEvent(command.AccountId, command.Amount, DateTimeOffset.UtcNow, Guid.NewGuid());
-        await _eventStore.SaveEventAsync(withdrawEvent);
 
         var bankAccount = await _bankAccountRepository.GetByIdAsync(command.AccountId);
-        bankAccount.Apply(withdrawEvent);
+        var succeeded = bankAccount.Apply(withdrawEvent);
 
+        if (!succeeded) return;
+
+        await _eventStore.SaveEventAsync(withdrawEvent);
         Console.WriteLine($"WithdrawCommandHandler: AccountId={command.AccountId}, Amount={command.Amount}");
     }
 }

@@ -2,4 +2,7 @@
 
 namespace ConsoleApp.CustomMediatr.Commands;
 
-public record WithdrawCommand(Guid AccountId, decimal Amount) : ICommand;
+public record WithdrawCommand(Guid AccountId, decimal Amount) : ICommand
+{
+    public bool Succeeded { get; set; }
+}

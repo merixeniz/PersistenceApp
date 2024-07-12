@@ -2,5 +2,9 @@
 
 namespace ConsoleApp.CustomMediatr.Commands
 {
-    public record UndoCommand(Guid EventId) : ICommand;
+    public record UndoCommand(Guid EventId) : ICommand
+    {
+        public bool Succeeded { get; set; }
+
+    }
 }

@@ -18,17 +18,20 @@ internal class TransferCommandHandler : ICommandHandler<TransferCommand>
     public async Task HandleAsync(TransferCommand command)
     {
         if (command == null)
-            throw new ArgumentNullException(nameof(command));
+            return;
 
         var transferEvent = new TransferredEvent(command.FromAccountId, command.ToAccountId, command.Amount, DateTimeOffset.UtcNow, Guid.NewGuid());
-        await _eventStore.SaveEventAsync(transferEvent);
 
         var fromAccount = await _bankAccountRepository.GetByIdAsync(command.FromAccountId);
-        fromAccount.Apply(transferEvent);
+        var withDrawSucceeded = fromAccount.Apply(transferEvent);
+
+        if (!withDrawSucceeded)
+            return;
 
         var toAccount = await _bankAccountRepository.GetByIdAsync(command.ToAccountId);
         toAccount.Apply(transferEvent);
 
+        await _eventStore.SaveEventAsync(transferEvent);
         Console.WriteLine($"TransferCommandHandler: FromAccountId={command.FromAccountId}, ToAccountId={command.ToAccountId}, Amount={command.Amount}");
     }
 }

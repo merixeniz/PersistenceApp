@@ -19,17 +19,17 @@ namespace ConsoleApp.CustomMediatr.Handlers
         public async Task HandleAsync(UndoCommand command)
         {
             if (command == null)
-                throw new ArgumentNullException(nameof(command));
+                return;
 
             var eventToUndo = await _eventStore.GetEventAsync(command.EventId);
             if (eventToUndo == null)
-                throw new ArgumentException($"Event not found: {command.EventId}");
+                return;
 
             BankAccount bankAccount;
             BankAccount fromAccount;
             BankAccount toAccount;
-
             IEvent reversedEvent;
+
             switch (eventToUndo)
             {
                 case DepositedEvent deposited:
@@ -53,7 +53,11 @@ namespace ConsoleApp.CustomMediatr.Handlers
                     fromAccount = await _bankAccountRepository.GetByIdAsync(transferred.ToAggregateId);
                     toAccount = await _bankAccountRepository.GetByIdAsync(transferred.FromAggregateId);
 
-                    fromAccount.Apply(transferredEvent);
+                    var withdrawSucceeded = fromAccount.Apply(transferredEvent);
+
+                    if (!withdrawSucceeded)
+                        return;
+
                     toAccount.Apply(transferredEvent);
 
                     reversedEvent = transferredEvent;

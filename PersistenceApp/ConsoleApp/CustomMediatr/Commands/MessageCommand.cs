@@ -4,4 +4,5 @@ namespace ConsoleApp.CustomMediatr.Commands;
 
 internal record MessageCommand(int Id, string Message) : ICommand
 {
+    public bool Succeeded { get; set; }
 }

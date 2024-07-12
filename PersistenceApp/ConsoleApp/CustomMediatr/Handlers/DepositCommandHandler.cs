@@ -22,11 +22,14 @@ internal class DepositCommandHandler : ICommandHandler<DepositCommand>
             throw new ArgumentNullException(nameof(command));
 
         var depositEvent = new DepositedEvent(command.AccountId, command.Amount, DateTimeOffset.UtcNow, Guid.NewGuid());
-        await _eventStore.SaveEventAsync(depositEvent);
 
         var bankAccount = await _bankAccountRepository.GetByIdAsync(command.AccountId);
-        bankAccount.Apply(depositEvent);
+        var succeeded = bankAccount.Apply(depositEvent);
 
+        if (!succeeded)
+            return;
+
+        await _eventStore.SaveEventAsync(depositEvent);
         Console.WriteLine($"DepositCommandHandler: AccountId={command.AccountId}, Amount={command.Amount}");
     }
 }
