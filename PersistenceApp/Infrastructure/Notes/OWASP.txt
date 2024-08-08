@@ -30,4 +30,4 @@ Pamiętaj o weryfikacji zgodności z zasadami OWASP.
 10. **Kontynuacja nauki i świadomość bezpieczeństwa**: Zapewnij regularne szkolenia dla zespołu programistycznego w zakresie bezpieczeństwa aplikacji 
 oraz śledź aktualne trendy i wyzwania związane z bezpieczeństwem informatycznym.
 
-Przestrzeganie tych praktyk pomoże zminimalizować ryzyko ataków i zwiększyć bezpieczeństwo Twojej aplikacji.
+Przestrzeganie tych praktyk pomoże zminimalizowsalesać ryzyko ataków i zwiększyć bezpieczeństwo Twojej aplikacji.

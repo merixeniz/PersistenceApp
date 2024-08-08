@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NorthmillCodility\**" />
+    <EmbeddedResource Remove="NorthmillCodility\**" />
+    <None Remove="NorthmillCodility\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 

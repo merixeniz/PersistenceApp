@@ -2,3 +2,10 @@
 2. ref struct to sturktura zaalokowana na stacku!
 3. Memory<T> reprezentuje ciagly region w pamieci, ktory moze byc placed on managed heap, moze byc uzyty w polach klasy, z asyncami i z yieldami
 https://stackoverflow.com/questions/47321691/what-is-the-difference-between-spant-and-memoryt-in-c-sharp-7-2
+
+
+Czy uzywacie Parallel.Linq,
+Czy uzywacie Vector<T> (SIMD) i Span<T> lub klasy Interlocked?
+Czy przetwarzacie pliki graficzne w oparciu o pointery (unsafe code)?
+Czy macie podzila na Read and Write DBs?
+Czy uzywacie gRPC lub GraphQL?

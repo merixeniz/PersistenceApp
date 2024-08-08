@@ -1,0 +1,40 @@
+﻿Systemy oparte o message brokery, takie jak RabbitMQ, Apache Kafka, Amazon SQS czy Azure Service Bus, są kluczowe dla budowy skalowalnych i niezawodnych aplikacji rozproszonych. Oto kilka istotnych aspektów, które warto znać:
+
+1. Idempotentność
+Idempotentność oznacza, że przetwarzanie tej samej wiadomości więcej niż raz nie prowadzi do różnych rezultatów. Jest to ważne w przypadku systemów kolejkowych, które gwarantują co najmniej jednokrotne dostarczenie wiadomości (at-least-once delivery). Aby zapewnić idempotentność:
+
+Unikalne identyfikatory: Każda wiadomość powinna mieć unikalny identyfikator, który jest sprawdzany przed przetworzeniem.
+Transakcje: W niektórych przypadkach można użyć transakcji do zapewnienia, że operacja jest albo w pełni wykonana, albo wcale.
+Deduplication: Niektóre brokery, jak Apache Kafka, oferują mechanizmy deduplikacji na poziomie brokera.
+
+2. Problem producenta i konsumenta
+Producent (producer) i konsument (consumer) to dwa główne komponenty systemu opartego na message brokerze. Wyzwania związane z nimi obejmują:
+
+Backpressure (przepływ wsteczny): Jeśli producent generuje wiadomości szybciej niż konsument jest w stanie je przetwarzać, może dojść do przeciążenia systemu.
+Skalowanie horyzontalne: Dodawanie nowych instancji konsumentów, które będą przetwarzać wiadomości równolegle.
+Batch processing (przetwarzanie wsadowe): Pobieranie i przetwarzanie wiadomości w większych paczkach (chunkach), co może poprawić wydajność przetwarzania.
+Rate limiting: Ograniczanie szybkości produkcji wiadomości, aby konsument miał czas na ich przetworzenie.
+
+3. Delivery Guarantees (Gwarancje dostarczenia)
+At-most-once: Wiadomość może zostać dostarczona najwyżej raz. Może to prowadzić do utraty wiadomości.
+At-least-once: Wiadomość zostanie dostarczona co najmniej raz, co może prowadzić do duplikacji.
+Exactly-once: Wiadomość zostanie dostarczona dokładnie raz. Jest to najtrudniejsze do osiągnięcia, ale niektóre systemy, jak Kafka z odpowiednią konfiguracją, mogą to zapewnić.
+
+4. Konsystencja i trwałość
+Durable queues: Kolejki trwałe zapisują wiadomości na dysku, co chroni przed utratą danych w przypadku awarii brokera.
+Acknowledgements (potwierdzenia): Konsument potwierdza odbiór i przetworzenie wiadomości, co informuje brokera, że wiadomość może zostać usunięta z kolejki.
+
+5. Kolejkowanie i routing wiadomości
+FIFO (First-In-First-Out): Wiadomości są przetwarzane w takiej kolejności, w jakiej zostały dodane.
+Priority queues: Kolejki z priorytetami umożliwiają przetwarzanie ważniejszych wiadomości przed innymi.
+Topic-based routing: Wiadomości są kierowane na podstawie tematów, co pozwala na selektywne subskrypcje.
+
+6. Monitoring i zarządzanie
+Monitoring: Ważne jest monitorowanie zarówno stanu kolejek, jak i wydajności producentów i konsumentów.
+Metryki: Liczba wiadomości w kolejce, czas przetwarzania wiadomości, liczba błędów itp.
+Alerty: System powinien generować alerty w przypadku przeciążeń, opóźnień lub błędów.
+
+7. Bezpieczeństwo
+Autoryzacja i uwierzytelnianie: Zapewnienie, że tylko uprawnione aplikacje i użytkownicy mogą produkować i konsumować wiadomości.
+Szyfrowanie: Zarówno transmisja (TLS), jak i przechowywanie (szyfrowanie danych na dysku) powinny być odpowiednio zabezpieczone.
+Zrozumienie tych aspektów pomoże w skutecznym projektowaniu i implementacji systemów opartych na message brokerach, zapewniając ich niezawodność, skalowalność i bezpieczeństwo.

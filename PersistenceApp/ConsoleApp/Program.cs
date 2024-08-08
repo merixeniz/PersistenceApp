@@ -1,4 +1,5 @@
-﻿using Application.Algorithms.Trees;
+﻿using Application.Algorithms.RefStructs;
+using Application.Algorithms.Trees;
 using ConsoleApp.CustomMediatr.Commands;
 using ConsoleApp.CustomMediatr.Dispatcher;
 using ConsoleApp.CustomMediatr.Entities;
@@ -15,25 +16,30 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        //var dict = new Dictionary<int, string>
-        //{
-        //    { 5, "asd" }
-        //};
+        var dict = new Dictionary<int, string>
+        {
+            { 5, "asd" }
+        };
 
-        //var list = new List<int> { 1, 2, 3, 4, 5 };
-        //var array = new[] { 1, 2, 3, 4, 5 };
-        //var que = new Queue<int>([1, 2, 3, 4, 5]);
-        //var firstQueue = que.Dequeue();
-        //var stack = new Stack<int>([1, 2, 3, 4, 5]);
-        //var hashSet = new HashSet<int>([1, 2, 3, 4, 5]);
+        var list = new List<int> { 1, 2, 3, 4, 5 };
+        var array = new[] { 1, 2, 3, 4, 5 };
+        var que = new Queue<int>([1, 2, 3, 4, 5]);
+        var stack = new Stack<int>([1, 2, 3, 4, 5]);
+        var hashSet = new HashSet<int>([1, 2, 3, 4, 5]);
 
-        //await TaskFun.MainAsync();
-        //int[] array2 = [1, 2, 4, 5];
-        //TryReturn();
+        TemporaryMain(array);
 
-
-        await EventSourcingMain();
+        //await EventSourcingMain();
     }
+
+    private static void TemporaryMain(int[] array)
+    {
+        var arrayProcessorClass = new ArrayProcessorClass();
+        var processedArray = arrayProcessorClass.ProcessArray(array);
+        var arrayProcessorStruct = new ArrayProcessorStruct(array.AsSpan());
+        arrayProcessorStruct.Process();
+    }
+
 
     private static async Task EventSourcingMain()
     {
