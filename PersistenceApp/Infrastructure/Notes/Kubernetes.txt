@@ -1,0 +1,78 @@
+﻿Klaster Kubernetes sklada sie z Nodów, nody składaja sie z podów.
+
+Control Plane/Master Node - jest jeden node zarzadzający
+	- Api Server - entry point do k8s cluster - API, UI, CLI bedzie gadało do Api Server
+	- Controller Manager - zarządza kontrolerami - jesli container padl i musi zostac zrestowartowany
+	- Scheduler - decyduje na ktorym nodzie ma byc uruchomiony pod\
+	- etcd - baza danych - key/value - przechowuje konfiguracje k8s
+
+Virtual Network - pozwala na komunikacje miedzy nodami
+
+Worker node - node na którym uruchamiane są pod'y
+
+Worker nody ma wiecej resourcow przypisanych niz Master node. Powinien byc też backup master noda, jesli cos by sie z nim stało.
+
+---------
+Komponenty:
+
+Pod - najmniejsza jednostka w k8s - Abstraction over Container - moze byc jednym kontenerem lub grupa kontenerow
+	- ma swoj adres IP
+	- ma swoje storage
+	- ma swoje opcje restartu
+	- ma swoje opcje skali
+	- ma swoje opcje upgrade
+	- ma swoje opcje rollback
+
+	zazwyczaj pod ma miec 1 kontener, ale moze byc ich wiecej
+	Jesli kontener zostanie zabity to przypisane mu zostjae nowe IP, wiec Service pozwala na komunikacje miedzy nimi
+
+Service - pozwala na komunikacje miedzy podami - jest to static/permament IP address dla podów
+
+	Lifecycle poda i Service nie są połączone.
+	External Service - service dostepny z zewnatrz
+	Internal Service - service dostepny tylko wewnatrz klastera
+	jest to tez Load Balancer
+
+Ingress - pozwala na komunikacje z zewnatrz
+	
+	Zeby requesty z zewnatrz klastra przychodzily na jakas konkretna domene np. https://my-app.com Ingress routuje te requesty do odpowiedniego Service
+	np. ustawienia CORS tam są
+
+ConfigMap - przechowuje konfiguracje
+
+	przechowuje konfiguracje np. URL bazy danych itp. i podaje je do podów
+	przechowanie hasel w ConfigMap jest insecure do tego sluzy Secret
+
+Secret - przechowuje hasla
+
+	przechowuje hasla, klucze, tokeny itp. - jest to base64 encoded
+	Reference Secert in Deployment/Pod - np. u it as environment variables or properties file
+
+Volume - przechowuje dane
+
+	moze byc lokalny lub remote 
+	Think of storage as external hard drive connected to Kubernetes cluster
+	Kubernetes doesnt manage data persistance
+
+Deployment - zarzadza podami
+
+	Blueprint (szablon/wzorzec) for "my-app" Pods, zarzadza ile replik ma być
+	ile replik, ile zasobów, jaki obraz dockerowy, jakie zmienne srodowiskowe i reguly skalowania
+
+	Nie mozna replikowac baz danych za pomoca Deployments, bo bazy maja stan!
+
+StatefulSet - zarzadza podami z danymi
+
+	Zazwyczaj jednak hostuje sie bazy danych na zewnatrz klastra, nie ma wtedy problemów z wyscigami ktory pod moze teraz pisac po bazie
+	
+
+DaemonSet - zarzadza podami na wszystkich nodach
+
+
+Kazdy config file ma 3 sekcje:
+	- apiVersion 
+	- kind
+	- metadata
+	- spec
+
+	Etcd holds current status of each K8s component
