@@ -38,3 +38,44 @@ Alerty: System powinien generować alerty w przypadku przeciążeń, opóźnień
 Autoryzacja i uwierzytelnianie: Zapewnienie, że tylko uprawnione aplikacje i użytkownicy mogą produkować i konsumować wiadomości.
 Szyfrowanie: Zarówno transmisja (TLS), jak i przechowywanie (szyfrowanie danych na dysku) powinny być odpowiednio zabezpieczone.
 Zrozumienie tych aspektów pomoże w skutecznym projektowaniu i implementacji systemów opartych na message brokerach, zapewniając ich niezawodność, skalowalność i bezpieczeństwo.
+
+
+
+Azure Service Bus:
+
+Azure Service Bus to usługa komunikacyjna w chmurze Azure, umożliwiająca przesyłanie wiadomości pomiędzy różnymi aplikacjami lub usługami. Jest to rozwiązanie typu 
+„enterprise messaging”, które pozwala na tworzenie skalowalnych i niezawodnych rozwiązań integracyjnych. W ramach Azure Service Bus dostępne są trzy główne topologie komunikacyjne:
+
+1. Queues (Kolejki)
+	Opis: Kolejki działają w modelu point-to-point, co oznacza, że każda wiadomość jest odbierana tylko przez jednego konsumenta. Producent wysyła wiadomości do kolejki, 
+	a jeden z odbiorców (konsumentów) pobiera wiadomość do przetworzenia.
+	Zastosowanie: Kolejki są idealne w scenariuszach, gdzie istnieje potrzeba zbuforowania lub rozłożenia w czasie przetwarzania wiadomości, np. w aplikacjach z dużym obciążeniem, 
+	które wymagają rozproszonego przetwarzania.
+	Funkcje:
+	Kolejkowanie wiadomości w trybie „first-in, first-out” (FIFO).
+	Umożliwienie skalowania aplikacji, dodając więcej odbiorców.
+
+2. Topics and Subscriptions (Tematy i subskrypcje)
+	Opis: Tematy działają w modelu publish-subscribe (pub/sub). Producent publikuje wiadomości do tematu, a subskrybenci mogą zapisywać się na wybrane tematy. 
+	Każdy subskrybent otrzymuje swoją kopię wiadomości, niezależnie od tego, ilu subskrybentów istnieje.
+	Zastosowanie: Idealne w sytuacjach, gdzie wiadomość musi być odbierana przez wiele niezależnych konsumentów, np. w systemach monitorowania, alertowania, dystrybucji informacji.
+	Funkcje:
+	Możliwość definiowania filtrów i reguł, które decydują, jakie wiadomości będą dostarczane do subskrybentów.
+	Dostosowanie subskrypcji do różnych potrzeb aplikacji.
+
+3. Relays (Przekaźniki)
+	Opis: Przekaźniki działają w modelu hybrid i umożliwiają komunikację bezpośrednią pomiędzy aplikacjami w różnych lokalizacjach bez konieczności przechowywania wiadomości w 
+	pośrednim buforze (jak to ma miejsce w przypadku kolejek czy tematów). Relay umożliwia połączenie aplikacji działających za firewallem, bez potrzeby otwierania dodatkowych portów.
+	Zastosowanie: Relay jest często używany w scenariuszach integracji on-premises z chmurą, gdzie zachodzi potrzeba bezpośredniej komunikacji w czasie rzeczywistym.
+	Funkcje:
+	Zapewnia tunelowanie komunikacji między aplikacjami.
+	Oparty na protokołach takich jak HTTP lub WebSocket.
+
+Dodatkowe funkcje Azure Service Bus:
+	Dead-letter queue (DLQ): Specjalne kolejki na wiadomości, które nie mogły być dostarczone lub przetworzone w odpowiednim czasie.
+	
+	Forwarding: Automatyczne przekierowywanie wiadomości między różnymi kolejkami lub tematami.
+	
+	Session-based messaging: Możliwość grupowania wiadomości w sesje dla zapewnienia odpowiedniego porządku przetwarzania.
+	Azure Service Bus jest użytecznym rozwiązaniem dla rozproszonej architektury mikroserwisowej, szczególnie w scenariuszach wymagających niezawodnego przesyłania wiadomości 
+	i skalowalności.

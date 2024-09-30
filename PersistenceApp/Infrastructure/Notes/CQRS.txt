@@ -1,0 +1,63 @@
+﻿CQRS (Command Query Responsibility Segregation) to wzorzec architektoniczny, który oddziela odpowiedzialności związane z obsługą komend (modyfikacja stanu systemu) 
+i zapytań (odczyt danych). W tradycyjnym podejściu, ten sam model danych jest używany zarówno do odczytu, jak i do zapisu. 
+W CQRS te dwie odpowiedzialności są rozdzielone, co pozwala na lepsze skalowanie i optymalizację aplikacji.
+
+Dlaczego stosować CQRS:
+
+1. Optymalizacja pod kątem zapisu i odczytu:
+
+Dzięki rozdzieleniu operacji zapisu i odczytu, możemy zoptymalizować każdą z tych operacji oddzielnie. Modele odczytu mogą być zoptymalizowane pod kątem szybkiego pobierania danych, 
+np. przez denormalizację, a modele zapisu mogą być skoncentrowane na bardziej złożonych operacjach związanych z integralnością danych.
+
+2. Skalowalność:
+
+CQRS ułatwia skalowanie systemu, ponieważ możemy oddzielnie skalować operacje zapisu (np. przy dużej liczbie operacji biznesowych) oraz operacje odczytu 
+(np. gdy użytkownicy wykonują wiele zapytań).
+
+3. Złożoność domeny:
+
+CQRS sprawdza się w systemach o złożonej logice biznesowej, gdzie operacje zapisu są skomplikowane, a modele danych różnią się znacząco w zależności od tego, 
+czy obsługujemy zapytania, czy komendy. Umożliwia to utrzymanie spójności i jasności w kodzie.
+
+4. Wsparcie dla Event Sourcing:
+
+CQRS często jest używany w połączeniu z Event Sourcingiem, gdzie każda zmiana stanu systemu jest zapisywana jako wydarzenie. 
+Umożliwia to łatwe odtwarzanie stanu systemu w dowolnym momencie oraz analizę historii zmian.
+
+5. Odpowiedź na różne wymagania użytkowników:
+
+W aplikacjach o wysokiej złożoności i różnych wymaganiach co do wydajności odczytu i zapisu, CQRS umożliwia bardziej elastyczne projektowanie systemu. 
+Możemy łatwo dostosować np. bazę danych tylko do odczytów, używając denormalizacji lub innych technik optymalizacyjnych.
+
+
+Kiedy stosować CQRS:
+
+1. Złożona logika biznesowa:
+
+CQRS jest użyteczne, gdy system wymaga różnego podejścia do operacji zapisu i odczytu. Na przykład w aplikacjach z rozbudowanymi operacjami biznesowymi, 
+gdzie aktualizacje danych są skomplikowane, ale odczyty danych muszą być szybkie i zoptymalizowane.
+
+2. Systemy o wysokiej wydajności:
+
+W sytuacjach, gdy od systemu oczekuje się bardzo wysokiej wydajności operacji odczytu (np. w aplikacjach e-commerce o dużym natężeniu ruchu), 
+CQRS pozwala zbudować osobne ścieżki do optymalizacji tych operacji.
+
+3. Zastosowanie Event Sourcing:
+
+CQRS jest naturalnym wyborem w systemach z Event Sourcingiem, gdzie każda zmiana w systemie jest zapisywana jako wydarzenie, a odczyty są realizowane na podstawie wydarzeń.
+
+4. Rozdzielenie odpowiedzialności:
+
+Gdy chcemy wyraźnie rozdzielić odpowiedzialności w aplikacji i mieć osobne modele do zapisu i odczytu danych, CQRS pomaga utrzymać czystość i modularność kodu.
+
+5. Projekty z dużą ilością operacji odczytu i zapisu:
+
+CQRS sprawdza się tam, gdzie istnieje duża różnica w liczbie operacji odczytu i zapisu. Na przykład, gdy zapisy są rzadsze, ale odczyty są realizowane często i muszą być szybkie.
+
+
+Kiedy unikać CQRS:
+
+W prostych aplikacjach, gdzie model danych dla operacji odczytu i zapisu jest podobny, CQRS może wprowadzać zbędną komplikację. 
+CQRS dodaje dodatkową warstwę złożoności, która jest uzasadniona tylko w bardziej wymagających systemach.
+CQRS ma sens tam, gdzie istnieje potrzeba lepszego skalowania i optymalizacji oraz w systemach o złożonej logice i dużej liczbie operacji zapisu i odczytu. 
+W połączeniu z Event Sourcingiem może prowadzić do bardzo elastycznych i wydajnych architektur.

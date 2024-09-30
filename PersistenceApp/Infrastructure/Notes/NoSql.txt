@@ -1,0 +1,168 @@
+﻿
+https://www.youtube.com/watch?v=XU1ZuwiWW_k
+
+1. Azure cosmos db consistency - staleness, bounded staleness, session, itp.
+
+	Strong: Najwyższa spójność, najwyższe opóźnienia.
+	Bounded Staleness: Określony limit na to, jak bardzo dane mogą być przestarzałe.
+	Session: Spójność dla sesji pojedynczego użytkownika.
+	Consistent Prefix: Gwarantuje kolejność zmian, ale dane mogą być przestarzałe.
+	Eventual: Najsłabsza spójność, ale najlepsza dostępność i najmniejsze opóźnienia.
+
+	Te poziomy spójności są kluczowe w kontekście replikacji danych między regionami lub w ramach jednej dużej geograficznej strefy dostępności, 
+	aby umożliwić działanie aplikacji w rozproszonym środowisku.
+
+2. Azure Cosmos DB Change Feed to funkcja, która udostępnia ciągły strumień zmian (dodanych, zmodyfikowanych lub usuniętych dokumentów) w kontenerze Cosmos DB. 
+	
+	Pozwala na śledzenie w czasie rzeczywistym wszystkich operacji zapisu, które miały miejsce w kontenerze. 
+	Jest to szczególnie przydatne w przypadku aplikacji, które muszą reagować na zmiany danych.
+
+	Jak to działa:
+	Change Feed jest dostępny na poziomie kontenera** w Azure Cosmos DB.
+	Zapisuje wszystkie zmiany w kolejności, w jakiej miały miejsce. Każdy nowy dokument lub zaktualizowany dokument pojawia się w strumieniu zmian.
+	Zamiast wykonywać pełne odczyty danych, można subskrybować strumień zmian i otrzymywać tylko nowe lub zmodyfikowane dane.
+
+3. Azure cosmos db computed properties
+	
+	Azure Cosmos DB Computed Properties (Właściwości obliczane) to funkcjonalność, która pozwala definiować i automatycznie obliczać dodatkowe właściwości na podstawie istniejących 
+	danych w dokumentach. Zamiast ręcznie modyfikować dokumenty, aby uwzględniały te dodatkowe informacje, Cosmos DB może je obliczać dynamicznie przy zapisie lub odczycie danych.
+
+	Kluczowe cechy Computed Properties:
+	Obliczenia na podstawie istniejących właściwości: Computed Properties pozwalają na tworzenie nowych pól (właściwości) na podstawie istniejących danych w dokumentach. 
+	Na przykład, jeśli masz dwa pola: price i quantity, możesz utworzyć właściwość obliczaną totalCost, która automatycznie oblicza price * quantity.
+
+	Eliminacja nadmiarowości: Zamiast przechowywać dane, które można wyliczyć na podstawie innych właściwości, można tworzyć obliczenia na bieżąco, 
+	co zmniejsza nadmiarowość i ułatwia zarządzanie danymi.
+
+	Optymalizacja zapytań: Computed Properties mogą być użyteczne do optymalizacji zapytań. Możesz definiować te właściwości w celu przyspieszenia operacji odczytu, 
+	ponieważ nie musisz przeprowadzać złożonych obliczeń bezpośrednio w zapytaniu. Właściwości obliczane są dostępne jak normalne pola w dokumentach.
+
+	Dynamiczne lub statyczne: Właściwości obliczane mogą być dynamiczne (wyliczane na bieżąco podczas zapytań) lub statyczne (obliczane podczas tworzenia lub aktualizacji dokumentów). 
+	Dynamiczne obliczenia są przydatne, gdy dane często się zmieniają, natomiast statyczne mogą być użyteczne, gdy dane są bardziej statyczne, a obliczenia są wykonywane rzadziej.
+	
+	https://www.youtube.com/watch?v=VqYzZJzX4QU
+
+4. Projektowanie baz - Key Takeaways:
+	
+	Identify key access pattrerns ...and design for them
+
+	Partitioning is critical ...for best performance and scalability
+
+	Mateiralize relationships by:
+		- Embedding data
+		- Denormalizing data and pre-aggregating
+		- Storing related entities in the same container
+
+
+5. Tranzakcyjnosc:
+
+	W Azure Cosmos DB transakcje są obsługiwane na poziomie partycji i w obrębie jednej operacji (tzw. single partition transactions). 
+	Jeśli chcesz zapewnić transakcyjność przy modyfikacjach wielu dokumentów w tej samej partycji, Cosmos DB wspiera tzw. transactional batch. 
+	Natomiast w przypadku wielu wątków modyfikujących ten sam dokument, Cosmos DB dostarcza mechanizmy optymistycznej kontroli współbieżności poprzez ETag oraz Conditionals.
+
+	Optymistyczna kontrola współbieżności i ETag
+	Każdy dokument w Cosmos DB posiada pole _etag, które jest automatycznie aktualizowane przy każdej modyfikacji dokumentu. 
+	Jeśli dwa wątki próbują zmienić ten sam dokument jednocześnie, możesz użyć mechanizmu ETag do weryfikacji, czy dokument, który próbujesz zmodyfikować, nie został zmieniony od czasu, gdy go ostatnio odczytałeś.
+
+	Przykład:
+
+	Wątek A odczytuje dokument z ETag A1.
+	Wątek B odczytuje ten sam dokument z tym samym ETag A1.
+	Wątek A modyfikuje dokument i zapisuje go. ETag zmienia się na A2.
+	Wątek B próbuje zmodyfikować dokument, ale weryfikacja ETag pokaże, że dokument zmienił się od czasu jego odczytu. 
+	Wątek B dostanie błąd i może podjąć odpowiednią akcję, np. ponownie pobrać dokument.
+	Ten mechanizm pozwala na uniknięcie kolizji podczas aktualizacji dokumentów.
+
+	Transactional Batch
+	Jeśli wszystkie operacje (odczyt, zapis, usunięcie) są wykonywane w obrębie jednej partycji, Cosmos DB umożliwia używanie Transactional Batch. 
+	Dzięki temu możesz wykonywać kilka operacji w ramach jednej transakcji i zapewnić, że wszystkie zakończą się sukcesem lub żadna z nich nie zostanie zastosowana.
+
+	Podsumowując, ETag i optymistyczna kontrola współbieżności to podstawowe mechanizmy do obsługi współbieżności w Cosmos DB.
+
+
+
+
+6. Typy baz NoSQL:
+
+	Bazy NoSQL to rodzaj baz danych, które są nienumeryczne i przechowują dane w sposób niehierarchiczny, co różni je od tradycyjnych relacyjnych baz danych (SQL). 
+	Bazy NoSQL zostały zaprojektowane do pracy z dużymi ilościami danych i dynamicznymi aplikacjami, które wymagają wysokiej skalowalności i elastyczności. 
+	Poniżej znajdziesz główne typy baz NoSQL oraz ich zastosowania.
+
+	1. Bazy klucz-wartość (Key-Value)
+	
+	Struktura danych: Dane są przechowywane w formie par klucz-wartość, gdzie klucz jest unikalnym identyfikatorem, a wartość może być dowolnym ciągiem danych 
+	(np. ciągiem tekstu, dokumentem JSON, binarną wartością).
+	
+	Przykłady: Redis, DynamoDB, Memcached
+	
+	Zastosowania:
+	Przechowywanie sesji użytkowników
+	Cache (buforowanie danych w pamięci)
+	Zarządzanie sesjami i danymi sesji w aplikacjach internetowych
+	Sklep z danymi preferencji użytkowników
+	
+	Zalety: Szybkie wyszukiwanie danych na podstawie kluczy, prosta struktura.
+	
+	2. Bazy dokumentowe (Document Stores)
+	
+	Struktura danych: Przechowują dane w formacie dokumentów (np. JSON, BSON, XML). Dokumenty mogą mieć złożone struktury, zawierające dane w postaci list, map, tablic itp.
+	
+	Przykłady: MongoDB, CouchDB, Cosmos DB (mode dokumentu)
+	
+	Zastosowania:
+	Aplikacje złożone z dynamicznych danych, np. sklepy internetowe, systemy zarządzania treścią (CMS)
+	Aplikacje mobilne, które muszą synchronizować i przechowywać dane offline
+	Systemy zarządzania danymi klientów (CRM)
+	
+	Zalety: Elastyczne przechowywanie danych o nieustalonej strukturze, łatwe do rozszerzania (skalowalność).
+	
+	3. Bazy kolumnowe (Column-Family Stores)
+	
+	Struktura danych: Dane są przechowywane w wierszach, ale każda kolumna w wierszu może mieć różne atrybuty. 
+	Bazy kolumnowe są zoptymalizowane do pracy z dużymi ilościami danych, zwłaszcza w analizie i raportowaniu.
+	
+	Przykłady: Apache Cassandra, HBase, ScyllaDB
+	
+	Zastosowania:	
+	Analiza danych i hurtownie danych
+	Przechowywanie i przetwarzanie danych z logów i strumieni danych
+	Aplikacje obsługujące duże ilości danych o wysokiej skalowalności
+	
+	Zalety: Wysoka wydajność w pracy z dużymi zbiorami danych, możliwość odpytywania dużych zestawów danych w sposób rozproszony.
+	
+	4. Bazy grafowe (Graph Databases)
+	
+	Struktura danych: Oparte na węzłach i krawędziach, gdzie węzły reprezentują jednostki (np. osoby, produkty), a krawędzie reprezentują relacje między nimi. 
+	Idealne do modelowania złożonych relacji.
+	
+	Przykłady: Neo4j, Amazon Neptune, ArangoDB
+	
+	Zastosowania:
+	Zarządzanie sieciami społecznymi (np. LinkedIn, Facebook)
+	Systemy rekomendacji (np. rekomendacje produktów)
+	Mapowanie relacji w sieciach (np. sieci telekomunikacyjne, analizy zachowań użytkowników)
+	
+	Zalety: Doskonałe do modelowania złożonych zależności i wykonywania zapytań opartych na relacjach.
+	
+	5. Bazy oparte na strukturze wykresów czasowych (Time Series Databases)
+	
+	Struktura danych: Optymalizowane do przechowywania danych, które są indeksowane czasowo. Przechowują ciągi danych zorganizowanych według znacznika czasowego.
+	Przykłady: InfluxDB, TimescaleDB, OpenTSDB
+	
+	Zastosowania:
+	Monitorowanie systemów IT i IoT (Internet of Things)
+	Analiza i wizualizacja danych czasowych (np. śledzenie stanu zdrowia, analizy finansowe)
+	Zbieranie danych z czujników
+	
+	Zalety: Wydajność i optymalizacja w pracy z danymi zmieniającymi się w czasie, np. danymi metrycznymi.
+	
+	6. Bazy danych zorientowane na obiekty (Object-Oriented Databases)
+	
+	Struktura danych: Przechowują dane w formie obiektów, podobnych do tych w programowaniu obiektowym. Każdy obiekt posiada atrybuty i metody.
+	
+	Przykłady: db4o, ObjectDB
+	
+	Zastosowania:
+	Aplikacje oparte na programowaniu obiektowym, gdzie dane są modelowane jako obiekty
+	Systemy wspomagania decyzji i zarządzania danymi
+	Zalety: Intuicyjna integracja z obiektowymi językami programowania, ułatwione zarządzanie złożonymi strukturami danych.

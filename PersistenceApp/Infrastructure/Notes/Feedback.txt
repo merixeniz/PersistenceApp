@@ -1,0 +1,19 @@
+﻿Technologie Azure: Masz dobrą znajomość Azure Service Bus, jednak w naszym projekcie korzystamy również z innych technologii, takich jak Azure Event Grid i Azure IoT Hub. 
+Od kandydatów do tego projektu oczekujemy znajomości tych technologii, co umożliwiłoby proponowanie klientowi optymalnych rozwiązań.
+
+Składowanie danych w Azure: W projekcie korzystamy z Azure Table Storage i Cosmos DB. Ważne by móc rozróżnić bazę relacyjną od nierelacyjnej, 
+a także umieć porównać te dwie usługi i znać ich mocne i słabe strony.
+
+Pricing rozwiązań Azure: Zależy nam by osoba na tym stanowisku była świadoma kwestii cenowych różnych usług Azure, a także różnic między poszczególnymi tierami usług. 
+Jest to kluczowe przy proponowaniu klientowi optymalnych rozwiązań, jednak nie pojawił się ten temat w Twojej wypowiedzi.
+
+Bazy NoSQL: Znasz pojęcia związane z bazami NoSQL, takie jak sharding i skalowalność, jednak od kandydatów wymagamy również umiejętności wyjaśnienia typów baz NoSQL oraz ich zastosowań.
+
+CQRS: Oczekujemy, od kandydatów by potrafili nie tylko podać przykłady zastosowań CQRS, jak event-driven architecture, ale także w pełni wytłumaczyć, 
+dlaczego i kiedy stosować to podejście.
+
+Umiejętności komunikacyjne: Poszukujemy osoby, która w jasny sposób tłumaczy techniczne zagadnienia i wykazuje proaktywność w komunikacji, 
+szczególnie z klientami i zewnętrznymi partnerami. W zadaniu dotyczącym troubleshootingu komunikacji między systemami, 
+warto by było dodać takie akcje jak: kontakt z reprezentantami zewnętrznego systemu oraz zapewnienie klienta o wdrożeniu działań zabezpieczających na przyszłość.
+Ważne jest również, abyś rozwijał swoje umiejętności w klarownym prezentowaniu zagadnień technicznych i budował transparentność w komunikacji, 
+szczególnie w kontekście współpracy z klientem.
